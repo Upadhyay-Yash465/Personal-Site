@@ -1,0 +1,603 @@
+/*
+ * DESIGN DECISIONS
+ * ────────────────────────────────────────────────────────────
+ *
+ * Accent: #B05C38 (terracotta)
+ * Tech portfolios default to blue, purple, or safe teal. Terracotta is warm
+ * and confident without being playful. It reads as chosen, not generated.
+ * Used only on hover states — project numbers, underlines, left-border reveal.
+ * Never as a background, never on body text.
+ *
+ * Signature moment: project rows, not cards.
+ * On hover, the large Cormorant numeral transitions from border-gray to terracotta,
+ * a 3px accent border scaleY-animates up the left edge of the row, and the arrow
+ * shifts northeast. The effect is editorial and precise — no radius soup, no shadows.
+ * The ::before lives on the <li>, not the <a>, so it's immune to any inner transforms.
+ *
+ * Type pairing: Cormorant Garamond (display) + DM Sans (body)
+ * Cormorant's high optical contrast does visual hierarchy so color doesn't have to.
+ * DM Sans is geometric but not invisible — more character than Inter at small sizes.
+ * ────────────────────────────────────────────────────────────
+ */
+
+:root {
+  /* Dark mode (default) */
+  --bg:             #141414;
+  --text:           #EBEBEB;
+  --text-secondary: #888888;
+  --accent:         #C0714A;
+  --border:         #2C2C2C;
+  --border-faint:   #1F1F1F;
+
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body:    'DM Sans', system-ui, -apple-system, sans-serif;
+
+  --ease: 220ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  --gutter:     3rem;
+  --max-width:  1180px;
+}
+
+/* Light mode overrides */
+:root[data-theme="light"] {
+  --bg:             #F8F9FA;
+  --text:           #111111;
+  --text-secondary: #666666;
+  --accent:         #B05C38;
+  --border:         #E0E0E0;
+  --border-faint:   #EBEBEB;
+}
+
+/* ── Reset ──────────────────────────────── */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration:  0.01ms !important;
+  }
+}
+
+body {
+  background:              var(--bg);
+  color:                   var(--text);
+  font-family:             var(--font-body);
+  font-size:               16px;
+  line-height:             1.6;
+  -webkit-font-smoothing:  antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition:              background var(--ease), color var(--ease);
+}
+
+/* ── Skip link ──────────────────────────── */
+
+.skip-link {
+  position:        absolute;
+  top:             -100%;
+  left:            1rem;
+  padding:         0.4rem 0.9rem;
+  background:      var(--text);
+  color:           var(--bg);
+  font-size:       0.8rem;
+  text-decoration: none;
+  z-index:         200;
+  transition:      top var(--ease);
+}
+
+.skip-link:focus {
+  top: 0.75rem;
+}
+
+/* ── Header ─────────────────────────────── */
+
+.site-header {
+  position:         fixed;
+  inset-block-start:  0;
+  inset-inline:       0;
+  z-index:          100;
+  background:       var(--bg);
+  border-bottom:    1px solid transparent;
+  transition:       border-color var(--ease);
+}
+
+.site-header.scrolled {
+  border-bottom-color: var(--border);
+}
+
+.header-inner {
+  display:         flex;
+  justify-content: space-between;
+  align-items:     center;
+  max-width:       var(--max-width);
+  margin:          0 auto;
+  padding:         1.25rem var(--gutter);
+}
+
+.header-wordmark {
+  font-family:     var(--font-display);
+  font-size:       1.1rem;
+  font-weight:     400;
+  letter-spacing:  0.04em;
+  color:           var(--text);
+  text-decoration: none;
+}
+
+.header-controls {
+  display:     flex;
+  align-items: center;
+}
+
+/* ── Theme toggle ────────────────────────── */
+
+.theme-toggle {
+  display:          flex;
+  align-items:      center;
+  justify-content:  center;
+  width:            1.6rem;
+  height:           1.6rem;
+  padding:          0;
+  background:       none;
+  border:           1px solid var(--border);
+  border-radius:    50%;
+  cursor:           pointer;
+  color:            var(--text-secondary);
+  transition:       border-color var(--ease), color var(--ease);
+  flex-shrink:      0;
+}
+
+.theme-toggle:hover {
+  border-color: var(--accent);
+  color:        var(--accent);
+}
+
+.theme-toggle:focus-visible {
+  outline:        2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Icon: sun in dark mode, moon in light mode */
+.theme-toggle-icon {
+  display:     block;
+  width:       0.7rem;
+  height:      0.7rem;
+  border-radius: 50%;
+  background:  currentColor;
+  transition:  box-shadow var(--ease);
+}
+
+/* Dark mode → show sun (full circle) */
+:root[data-theme="dark"] .theme-toggle-icon {
+  background:  currentColor;
+  box-shadow:  none;
+}
+
+/* Light mode → show crescent (circle with offset shadow) */
+:root[data-theme="light"] .theme-toggle-icon {
+  background:  transparent;
+  box-shadow:  inset -2px 1px 0 1px currentColor;
+}
+
+/* ── Hero ───────────────────────────────── */
+
+.hero {
+  max-width: var(--max-width);
+  margin:    0 auto;
+  padding:   10rem var(--gutter) 4.5rem;
+}
+
+.hero-inner {
+  display:         grid;
+  grid-template-columns: 1fr auto;
+  align-items:     flex-end;
+  gap:             2rem;
+  padding-bottom:  3.5rem;
+  border-bottom:   1px solid var(--border);
+}
+
+.hero-name h1 {
+  font-family:    var(--font-display);
+  font-size:      clamp(3.5rem, 8.5vw, 8.5rem);
+  font-weight:    300;
+  line-height:    0.92;
+  letter-spacing: -0.025em;
+  color:          var(--text);
+  font-feature-settings: 'liga' 1, 'kern' 1, 'onum' 1;
+}
+
+.surname {
+  display: block;
+  /* Sits on its own line — creates stacked typographic mass on desktop */
+}
+
+.hero-meta {
+  text-align:     right;
+  padding-bottom: 0.4rem;
+  flex-shrink:    0;
+}
+
+.role {
+  font-family:  var(--font-body);
+  font-size:    0.875rem;
+  font-weight:  400;
+  line-height:  1.55;
+  color:        var(--text);
+  margin-bottom: 0.5rem;
+}
+
+.location {
+  font-size:      0.7rem;
+  font-weight:    300;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color:          var(--text-secondary);
+}
+
+/* ── Section label (shared) ─────────────── */
+
+.section-label {
+  font-family:     var(--font-body);
+  font-size:       0.68rem;
+  font-weight:     500;
+  letter-spacing:  0.16em;
+  text-transform:  uppercase;
+  color:           var(--text-secondary);
+}
+
+/* ── Work ───────────────────────────────── */
+
+.work {
+  max-width: var(--max-width);
+  margin:    0 auto;
+  padding:   5rem var(--gutter);
+}
+
+.work .section-label {
+  margin-bottom: 3rem;
+}
+
+/* ── Project list ───────────────────────── */
+
+.project-list {
+  list-style: none;
+}
+
+.project-item {
+  position:    relative;
+  border-top:  1px solid var(--border);
+}
+
+.project-item:last-child {
+  border-bottom: 1px solid var(--border);
+}
+
+/* The signature border — lives on the li, not the a, so it never shifts */
+.project-item::before {
+  content:          '';
+  position:         absolute;
+  inset-block:      0;
+  left:             0;
+  width:            3px;
+  background:       var(--accent);
+  transform:        scaleY(0);
+  transform-origin: bottom center;
+  transition:       transform var(--ease);
+  z-index:          1;
+}
+
+.project-item:has(.project-link:hover)::before,
+.project-item:has(.project-link:focus-visible)::before {
+  transform: scaleY(1);
+}
+
+.project-link {
+  display:         grid;
+  grid-template-columns: 5.5rem 1fr 2rem;
+  align-items:     start;
+  gap:             2rem;
+  padding:         2.5rem 0;
+  text-decoration: none;
+  color:           inherit;
+  outline:         none;
+}
+
+.project-link:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Numeral */
+.project-num {
+  font-family:    var(--font-display);
+  font-size:      3.75rem;
+  font-weight:    300;
+  line-height:    1;
+  color:          var(--border);
+  padding-top:    0.15rem;
+  user-select:    none;
+  transition:     color var(--ease);
+}
+
+.project-link:hover .project-num,
+.project-link:focus-visible .project-num {
+  color: var(--accent);
+}
+
+/* Body */
+.project-body {
+  padding-top: 0.2rem;
+}
+
+.project-title {
+  font-family:   var(--font-display);
+  font-size:     1.65rem;
+  font-weight:   400;
+  line-height:   1.15;
+  color:         var(--text);
+  margin-bottom: 0.55rem;
+}
+
+.project-desc {
+  font-size:     0.86rem;
+  line-height:   1.7;
+  color:         var(--text-secondary);
+  margin-bottom: 1.1rem;
+  max-width:     50ch;
+}
+
+.project-tags {
+  display:    flex;
+  flex-wrap:  wrap;
+  gap:        0.4rem;
+  list-style: none;
+}
+
+.project-tags li {
+  font-size:      0.64rem;
+  font-weight:    500;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color:          var(--text-secondary);
+  border:         1px solid var(--border);
+  padding:        0.18rem 0.5rem;
+  /* No border-radius — intentional */
+}
+
+/* Arrow */
+.project-arrow {
+  font-size:   1.1rem;
+  color:       var(--border);
+  align-self:  flex-start;
+  margin-top:  0.45rem;
+  transition:  color var(--ease), transform var(--ease);
+  line-height: 1;
+}
+
+.project-link:hover .project-arrow,
+.project-link:focus-visible .project-arrow {
+  color:     var(--accent);
+  transform: translate(4px, -4px);
+}
+
+/* ── About ──────────────────────────────── */
+
+.about {
+  max-width: var(--max-width);
+  margin:    0 auto;
+  padding:   5rem var(--gutter);
+  border-top: 1px solid var(--border);
+  display:   grid;
+  grid-template-columns: 5.5rem 1fr;
+  gap:       2rem;
+  align-items: start;
+}
+
+.about .section-label {
+  padding-top: 0.5rem; /* optical alignment with about-lead cap-height */
+}
+
+.about-lead {
+  font-family:   var(--font-display);
+  font-size:     1.7rem;
+  font-weight:   300;
+  font-style:    italic;
+  line-height:   1.38;
+  color:         var(--text);
+  margin-bottom: 1rem;
+}
+
+.about-body p + p {
+  font-size:   0.9rem;
+  line-height: 1.8;
+  color:       var(--text-secondary);
+}
+
+/* ── Contact ────────────────────────────── */
+
+.contact {
+  max-width: var(--max-width);
+  margin:    0 auto;
+  padding:   5rem var(--gutter);
+  border-top: 1px solid var(--border);
+  display:   grid;
+  grid-template-columns: 5.5rem 1fr;
+  gap:       2rem;
+  align-items: start;
+}
+
+.contact .section-label {
+  padding-top: 0.3rem;
+}
+
+.contact-links {
+  display:    flex;
+  flex-wrap:  wrap;
+  gap:        2.5rem;
+  align-items: baseline;
+}
+
+.contact-link {
+  position:        relative;
+  font-size:       0.9rem;
+  font-weight:     400;
+  color:           var(--text);
+  text-decoration: none;
+  transition:      color var(--ease);
+}
+
+.contact-link::after {
+  content:          '';
+  position:         absolute;
+  bottom:           -2px;
+  left:             0;
+  width:            100%;
+  height:           1px;
+  background:       var(--accent);
+  transform:        scaleX(0);
+  transform-origin: right center;
+  transition:       transform var(--ease);
+}
+
+.contact-link:hover {
+  color: var(--accent);
+}
+
+.contact-link:hover::after {
+  transform:        scaleX(1);
+  transform-origin: left center;
+}
+
+.contact-link:focus-visible {
+  outline:        2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* ── Footer ─────────────────────────────── */
+
+.site-footer {
+  max-width: var(--max-width);
+  margin:    0 auto;
+  padding:   1.75rem var(--gutter);
+  border-top: 1px solid var(--border-faint);
+}
+
+.site-footer p {
+  font-size:      0.72rem;
+  color:          var(--text-secondary);
+  letter-spacing: 0.05em;
+}
+
+/* ── Responsive: tablet ─────────────────── */
+
+@media (max-width: 900px) {
+  :root {
+    --gutter: 2rem;
+  }
+
+  .hero-inner {
+    grid-template-columns: 1fr;
+    align-items:           flex-start;
+    gap:                   1.5rem;
+  }
+
+  .hero-meta {
+    text-align: left;
+  }
+
+  .project-link {
+    grid-template-columns: 4rem 1fr 1.5rem;
+    gap: 1.25rem;
+  }
+
+  .project-num {
+    font-size: 2.75rem;
+  }
+}
+
+/* ── Responsive: mobile ─────────────────── */
+
+@media (max-width: 600px) {
+  :root {
+    --gutter: 1.25rem;
+  }
+
+  .header-inner {
+    padding-block: 1rem;
+  }
+
+  nav {
+    gap: 1.5rem;
+  }
+
+  .hero {
+    padding-top: 7.5rem;
+  }
+
+  .project-link {
+    grid-template-columns: 3.25rem 1fr;
+    gap: 1rem;
+    padding: 2rem 0;
+  }
+
+  .project-arrow {
+    display: none; /* arrow is decorative on mobile; link still works */
+  }
+
+  .project-num {
+    font-size: 2.25rem;
+  }
+
+  .project-title {
+    font-size: 1.35rem;
+  }
+
+  .about {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .about .section-label {
+    margin-bottom: 1.25rem;
+    padding-top: 0;
+  }
+
+  .about-lead {
+    font-size: 1.35rem;
+  }
+
+  .contact {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .contact .section-label {
+    margin-bottom: 1.25rem;
+    padding-top: 0;
+  }
+
+  .contact-links {
+    gap: 1.75rem;
+  }
+}
+
+/* ── Responsive: narrow mobile ──────────── */
+
+@media (max-width: 375px) {
+  nav a {
+    font-size: 0.63rem;
+    letter-spacing: 0.09em;
+  }
+
+  nav {
+    gap: 1.1rem;
+  }
+}
