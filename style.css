@@ -22,7 +22,7 @@
 
 :root {
   /* Dark mode (default) */
-  --bg:             #141414;
+  --bg:             #141210;
   --text:           #EBEBEB;
   --text-secondary: #888888;
   --accent:         #C0714A;
@@ -31,6 +31,7 @@
 
   --font-display: 'Cormorant Garamond', Georgia, serif;
   --font-body:    'DM Sans', system-ui, -apple-system, sans-serif;
+  --font-mono:    'IBM Plex Mono', 'JetBrains Mono', monospace;
 
   --ease: 220ms cubic-bezier(0.4, 0, 0.2, 1);
 
@@ -77,6 +78,17 @@ body {
   -webkit-font-smoothing:  antialiased;
   -moz-osx-font-smoothing: grayscale;
   transition:              background var(--ease), color var(--ease);
+}
+
+body::before {
+  content:            '';
+  position:           fixed;
+  inset:              0;
+  background-image:   url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size:    300px 300px;
+  opacity:            0.04;
+  pointer-events:     none;
+  z-index:            9999;
 }
 
 /* ── Skip link ──────────────────────────── */
@@ -201,17 +213,31 @@ body {
   align-items:     flex-end;
   gap:             2rem;
   padding-bottom:  3.5rem;
-  border-bottom:   1px solid var(--border);
+  position:        relative;
+}
+
+.hero-inner::after {
+  content:          '';
+  position:         absolute;
+  bottom:           0;
+  left:             0;
+  width:            100%;
+  height:           1px;
+  background:       var(--border);
+  transform:        scaleX(0);
+  transform-origin: left center;
+  animation:        drawRule 800ms cubic-bezier(0.4, 0, 0.2, 1) 200ms both;
 }
 
 .hero-name h1 {
   font-family:    var(--font-display);
-  font-size:      clamp(3.5rem, 8.5vw, 8.5rem);
+  font-size:      clamp(4rem, 13vw, 13rem);
   font-weight:    300;
-  line-height:    0.92;
-  letter-spacing: -0.025em;
+  line-height:    0.88;
+  letter-spacing: -0.03em;
   color:          var(--text);
   font-feature-settings: 'liga' 1, 'kern' 1, 'onum' 1;
+  animation:      fadeUp 700ms cubic-bezier(0.4, 0, 0.2, 1) 0ms both;
 }
 
 .surname {
@@ -223,6 +249,7 @@ body {
   text-align:     right;
   padding-bottom: 0.4rem;
   flex-shrink:    0;
+  animation:      fadeUp 500ms cubic-bezier(0.4, 0, 0.2, 1) 320ms both;
 }
 
 .role {
@@ -235,22 +262,23 @@ body {
 }
 
 .location {
-  font-size:      0.7rem;
+  font-family:    var(--font-mono);
+  font-size:      0.65rem;
   font-weight:    300;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+  letter-spacing: 0.06em;
   color:          var(--text-secondary);
 }
 
 /* ── Section label (shared) ─────────────── */
 
 .section-label {
-  font-family:     var(--font-body);
-  font-size:       0.68rem;
-  font-weight:     500;
-  letter-spacing:  0.16em;
+  font-family:     var(--font-mono);
+  font-size:       0.65rem;
+  font-weight:     400;
+  letter-spacing:  0.1em;
   text-transform:  uppercase;
   color:           var(--text-secondary);
+  animation:       fadeUp 400ms cubic-bezier(0.4, 0, 0.2, 1) 500ms both;
 }
 
 /* ── Work ───────────────────────────────── */
@@ -362,9 +390,10 @@ body {
 }
 
 .project-tags li {
-  font-size:      0.64rem;
-  font-weight:    500;
-  letter-spacing: 0.09em;
+  font-family:    var(--font-mono);
+  font-size:      0.6rem;
+  font-weight:    400;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   color:          var(--text-secondary);
   border:         1px solid var(--border);
@@ -388,7 +417,7 @@ body {
   transform: translate(4px, -4px);
 }
 
-/* ── About ──────────────────────────────── */
+/* ── About / Background ─────────────────── */
 
 .about {
   max-width: var(--max-width);
@@ -402,7 +431,7 @@ body {
 }
 
 .about .section-label {
-  padding-top: 0.5rem; /* optical alignment with about-lead cap-height */
+  padding-top: 0.5rem;
 }
 
 .about-lead {
@@ -412,13 +441,299 @@ body {
   font-style:    italic;
   line-height:   1.38;
   color:         var(--text);
-  margin-bottom: 1rem;
+  margin-bottom: 1.25rem;
+  letter-spacing: -0.01em;
 }
 
 .about-body p + p {
+  font-size:     0.875rem;
+  line-height:   1.85;
+  color:         var(--text-secondary);
+  margin-top:    0.75rem;
+}
+
+/* ── KnightRaas ─────────────────────────── */
+
+.raas {
+  max-width:  var(--max-width);
+  margin:     0 auto;
+  padding:    5rem var(--gutter);
+  border-top: 1px solid var(--border);
+  display:    grid;
+  grid-template-columns: 5.5rem 1fr;
+  gap:        2rem;
+  align-items: start;
+}
+
+.raas .section-label {
+  padding-top: 0.5rem;
+}
+
+.raas-body {
+  display:        flex;
+  flex-direction: column;
+  gap:            2.5rem;
+}
+
+.raas-headline-wrap {
+  display:        flex;
+  flex-direction: column;
+  gap:            0.75rem;
+}
+
+.raas-headline {
+  font-family:    var(--font-display);
+  font-size:      clamp(3rem, 7.5vw, 7.5rem);
+  font-weight:    300;
+  line-height:    0.9;
+  letter-spacing: -0.03em;
+  color:          var(--text);
+  font-feature-settings: 'liga' 1, 'kern' 1, 'onum' 1;
+}
+
+.raas-year {
+  display: block;
+}
+
+.raas-period {
+  color: var(--accent);
+}
+
+.raas-sub {
+  font-family:    var(--font-mono);
+  font-size:      0.62rem;
+  font-weight:    400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color:          var(--text-secondary);
+}
+
+.raas-text {
+  display:        flex;
+  flex-direction: column;
+  gap:            0.85rem;
+  max-width:      60ch;
+}
+
+.raas-text p {
   font-size:   0.9rem;
+  line-height: 1.85;
+  color:       var(--text-secondary);
+}
+
+.raas-text p:first-child {
+  color: var(--text);
+}
+
+/* ── How I Think ────────────────────────── */
+
+.thinking {
+  max-width:  var(--max-width);
+  margin:     0 auto;
+  padding:    5rem var(--gutter);
+  border-top: 1px solid var(--border);
+}
+
+.thinking-inner {
+  display:        flex;
+  flex-direction: column;
+  gap:            2rem;
+}
+
+.thinking-label {
+  display: block;
+}
+
+.thinking-text {
+  border:  none;
+  padding: 0;
+  margin:  0;
+  max-width: 52ch;
+  padding-left: 2rem;
+  border-left:  2px solid var(--border);
+}
+
+.thinking-text p {
+  font-family:   var(--font-display);
+  font-size:     clamp(1.1rem, 2.2vw, 1.5rem);
+  font-weight:   300;
+  font-style:    italic;
+  line-height:   1.55;
+  letter-spacing: -0.01em;
+  color:         var(--text);
+}
+
+.thinking-text p + p {
+  margin-top: 1rem;
+  color:      var(--text-secondary);
+}
+
+/* ── Worldbuilding ──────────────────────── */
+
+.worlds {
+  max-width:  var(--max-width);
+  margin:     0 auto;
+  padding:    5rem var(--gutter);
+  border-top: 1px solid var(--border);
+  display:    grid;
+  grid-template-columns: 5.5rem 1fr;
+  gap:        2rem;
+  align-items: start;
+}
+
+.worlds .section-label {
+  padding-top: 0.5rem;
+}
+
+.worlds-body {
+  display:        flex;
+  flex-direction: column;
+  gap:            2.5rem;
+}
+
+.worlds-preface {
+  font-size:   0.875rem;
+  line-height: 1.75;
+  color:       var(--text-secondary);
+  max-width:   55ch;
+}
+
+.world-entries {
+  display:        flex;
+  flex-direction: column;
+  gap:            0;
+}
+
+.world-entry {
+  display:        flex;
+  flex-direction: column;
+  gap:            0.65rem;
+  padding:        1.75rem 0;
+}
+
+.world-entry:first-child {
+  padding-top: 0;
+}
+
+.world-entry-head {
+  display:     flex;
+  align-items: baseline;
+  gap:         1.25rem;
+  flex-wrap:   wrap;
+}
+
+.world-title {
+  font-family:    var(--font-display);
+  font-size:      1.6rem;
+  font-weight:    400;
+  line-height:    1;
+  color:          var(--text);
+  letter-spacing: -0.01em;
+}
+
+.world-tags {
+  font-family:    var(--font-mono);
+  font-size:      0.58rem;
+  font-weight:    400;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color:          var(--text-secondary);
+}
+
+.world-desc {
+  font-size:   0.875rem;
   line-height: 1.8;
   color:       var(--text-secondary);
+  max-width:   55ch;
+}
+
+.world-desc em {
+  font-style: italic;
+  color:      var(--text);
+}
+
+.world-logic {
+  font-family:  var(--font-display);
+  font-size:    1rem;
+  font-style:   italic;
+  font-weight:  300;
+  line-height:  1.5;
+  color:        var(--text);
+  padding-left: 1.25rem;
+  border-left:  1px solid var(--accent);
+}
+
+.world-divider {
+  height:     1px;
+  background: var(--border-faint);
+  margin:     0;
+}
+
+.worlds-thread {
+  display:        flex;
+  flex-direction: column;
+  gap:            0.6rem;
+  padding-top:    0.5rem;
+  border-top:     1px solid var(--border-faint);
+}
+
+.worlds-thread p {
+  font-size:   0.8125rem;
+  line-height: 1.75;
+  color:       var(--text-secondary);
+  max-width:   58ch;
+}
+
+.worlds-refs {
+  font-family: var(--font-mono) !important;
+  font-size:   0.62rem !important;
+  letter-spacing: 0.05em;
+}
+
+.worlds-refs span {
+  color: var(--text);
+}
+
+/* ── Taste / Signals ────────────────────── */
+
+.taste {
+  max-width:  var(--max-width);
+  margin:     0 auto;
+  padding:    5rem var(--gutter);
+  border-top: 1px solid var(--border);
+  display:    grid;
+  grid-template-columns: 5.5rem 1fr;
+  gap:        2rem;
+  align-items: start;
+}
+
+.taste .section-label {
+  padding-top: 0.5rem;
+}
+
+.taste-body {
+  display:        flex;
+  flex-direction: column;
+  gap:            1.5rem;
+}
+
+.taste-markers {
+  font-family:    var(--font-mono);
+  font-size:      0.72rem;
+  font-weight:    300;
+  letter-spacing: 0.04em;
+  line-height:    2;
+  color:          var(--text);
+}
+
+.taste-aside {
+  font-size:   0.875rem;
+  line-height: 1.8;
+  color:       var(--text-secondary);
+  max-width:   48ch;
+  font-style:  italic;
+  padding-left: 1.25rem;
+  border-left:  1px solid var(--border);
 }
 
 /* ── Contact ────────────────────────────── */
@@ -491,9 +806,22 @@ body {
 }
 
 .site-footer p {
-  font-size:      0.72rem;
+  font-family:    var(--font-mono);
+  font-size:      0.65rem;
   color:          var(--text-secondary);
-  letter-spacing: 0.05em;
+  letter-spacing: 0.04em;
+}
+
+/* ── Page-load animations ───────────────── */
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes drawRule {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
 }
 
 /* ── Responsive: tablet ─────────────────── */
@@ -511,6 +839,10 @@ body {
 
   .hero-meta {
     text-align: left;
+  }
+
+  .hero-name h1 {
+    font-size: clamp(3.5rem, 14vw, 9rem);
   }
 
   .project-link {
@@ -542,6 +874,11 @@ body {
     padding-top: 7.5rem;
   }
 
+  .hero-name h1 {
+    font-size: clamp(3rem, 16vw, 5.5rem);
+    line-height: 0.9;
+  }
+
   .project-link {
     grid-template-columns: 3.25rem 1fr;
     gap: 1rem;
@@ -560,12 +897,21 @@ body {
     font-size: 1.35rem;
   }
 
-  .about {
+  .about,
+  .raas,
+  .thinking,
+  .worlds,
+  .taste,
+  .contact {
     grid-template-columns: 1fr;
     gap: 0;
   }
 
-  .about .section-label {
+  .about .section-label,
+  .raas .section-label,
+  .worlds .section-label,
+  .taste .section-label,
+  .contact .section-label {
     margin-bottom: 1.25rem;
     padding-top: 0;
   }
@@ -574,14 +920,12 @@ body {
     font-size: 1.35rem;
   }
 
-  .contact {
-    grid-template-columns: 1fr;
-    gap: 0;
+  .raas-headline {
+    font-size: clamp(2.75rem, 14vw, 5rem);
   }
 
-  .contact .section-label {
-    margin-bottom: 1.25rem;
-    padding-top: 0;
+  .thinking-text {
+    padding-left: 1.25rem;
   }
 
   .contact-links {
