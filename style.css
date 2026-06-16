@@ -757,11 +757,9 @@ body.music-immersive .immersive-exit-hint { opacity: 1; }
 /* ── Cover-flow carousel ────────────────── */
 
 @keyframes rotate-cover {
-  0%   { transform: translateX(-100%) rotateY(-45deg); }
-  35%  { transform: translateX(0)     rotateY(-45deg); }
-  50%  { transform: rotateY(0deg)     translateZ(1em) scale(1.18); }
-  65%  { transform: translateX(0)     rotateY(45deg); }
-  100% { transform: translateX(100%)  rotateY(45deg); }
+  from { transform: rotateY(-45deg) translateZ(0)   scale(1); }
+  50%  { transform: rotateY(0deg)   translateZ(1em) scale(1.18); }
+  to   { transform: rotateY(45deg)  translateZ(0)   scale(1); }
 }
 
 .carousel-section {
