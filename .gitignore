@@ -67,3 +67,9 @@ node_modules/
 
 # dataconnect generated files
 .dataconnect
+
+# Separate sub-app (own project) and large media — not part of the personal site
+Projects/
+
+# Session/tooling artifacts
+.playwright-mcp/
