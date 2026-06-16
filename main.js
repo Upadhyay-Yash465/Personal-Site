@@ -23,4 +23,28 @@
       applyTheme(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark')
     )
   );
+
+  // ── Role cycler — rotates the hero subtitle word ──────────────
+  const cycler = document.getElementById('role-cycler');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (cycler && !reduceMotion) {
+    const ROLES = [
+      'industrial engineer',
+      'dancer',
+      'builder',
+      'worldbuilder',
+      'debate coach',
+      'baker',
+    ];
+    let i = 0;
+    setInterval(() => {
+      cycler.classList.add('is-swapping');
+      setTimeout(() => {
+        i = (i + 1) % ROLES.length;
+        cycler.innerHTML = ROLES[i];
+        cycler.classList.remove('is-swapping');
+      }, 280);
+    }, 2400);
+  }
 }());
