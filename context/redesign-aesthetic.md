@@ -6,9 +6,29 @@ bursts** — "ink that bleeds, body that transforms, ritual that costs."
 
 ## Stack (unchanged)
 Pure HTML/CSS/JS, no build step, served at repo root via Firebase Hosting
-(`firebase.json`, project `personalsite-e65af`). Files: `index.html`, `style.css`,
-`main.js` (theme toggle + role-cycler), `carousel.js` (music immersive + cover-flow —
-**logic untouched** in the redesign).
+(`firebase.json`, project `personalsite-e65af`).
+
+## Structure: MULTI-PAGE (changed 2026-06-16, second pass)
+The site was converted from a single long-scroll page to **separate HTML pages**
+with a persistent top bar + hamburger nav on every page:
+- `index.html` — Home: full-viewport hero (name + role-cycler + sigil) → About → contact
+- `think.html` — How I Think (manifesto spine/tenets)
+- `dance.html` — Dance (KnightRaas + Fitness garba burst)
+- `books.html` — Books carousel **+ Worldbuilding (Lucky Boy/Tower) + Taste field-guide**
+- `music.html` — Music carousel + player (immersive scroll-fill **removed** — simplified per request)
+- `projects.html` — Ledger (work/projects)
+
+Shared per page: a fixed `.topbar` (`.menu-btn` hamburger LEFT of `.brand` name, `.theme-toggle` right),
+a full-screen `.nav-overlay` (`#nav-overlay`) with numbered Fraunces links and `aria-current="page"`
+on the active one. `main.js` handles theme + menu open/close (`body.menu-open`, hamburger→X) +
+role-cycler (guarded by element presence). `carousel.js` loaded only on `music.html` + `books.html`;
+its immersive scroll-fill state machine and the `.music-bar` elements were **deleted** — it now
+just renders the cover-flow carousels + iTunes-preview player. The old scroll-driven
+hero→nav collapse (commit dc87e42) was retired in favor of the persistent top bar.
+
+### (pre-multipage) original single-page files
+The first redesign pass put everything on one `index.html` with scroll-driven hero collapse
+and the music immersive bars; that was superseded by the multi-page structure above.
 
 ## Palette (CSS vars in `:root`, dark-first; Catppuccin Mocha derived)
 - Ink base: `--ink-0 #0d0c14`, `--ink-1 #11111b` (page bg), `--ink-2 #181825`, `--surface #1e1e2e`

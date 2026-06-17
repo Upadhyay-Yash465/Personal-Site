@@ -1,0 +1,124 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-06-16T00:00:00Z",
+  "title": "Design System: Yash Upadhyay",
+  "extensions": {
+    "colorMeta": {
+      "gold":        { "role": "primary",   "displayName": "Forge Gold",   "canonical": "#d4a574", "tonalRamp": ["#241a10","#3a2c1a","#553f24","#7a5c34","#9c7544","#b98a52","#d4a574","#e6c79e"] },
+      "blood":       { "role": "secondary", "displayName": "Cost Blood",   "canonical": "#c14a55", "tonalRamp": ["#240e10","#3d171b","#5a2228","#7c2f37","#9e3a43","#c14a55","#d06f78","#e3a3a9"] },
+      "viral":       { "role": "secondary", "displayName": "Viral Teal",   "canonical": "#4ac0b4", "tonalRamp": ["#0c211f","#123430","#184842","#1f6a60","#2a8f82","#3aa99c","#4ac0b4","#85d6cd"] },
+      "mauve":       { "role": "tertiary",  "displayName": "Taste Mauve",  "canonical": "#cba6f7", "tonalRamp": ["#1f1630","#2f2049","#412c66","#574088","#7256ad","#9a7ed0","#cba6f7","#e0cdfb"] },
+      "ash":         { "role": "neutral",   "displayName": "Ash",          "canonical": "#cdd6f4", "tonalRamp": ["#11111b","#1e1e2e","#313244","#45475a","#585b70","#7f849c","#9399b2","#cdd6f4"] },
+      "ink-1":       { "role": "neutral",   "displayName": "Forge Ink",    "canonical": "#11111b", "tonalRamp": ["#0d0c14","#11111b","#181825","#1e1e2e","#26263a","#313244","#45475a","#585b70"] },
+      "garba-marigold": { "role": "tertiary", "displayName": "Garba Marigold", "canonical": "#f5a623", "tonalRamp": ["#2e1d05","#48300b","#664512","#8a5d18","#b07a1f","#d49126","#f5a623","#f9c468"] },
+      "garba-magenta":  { "role": "tertiary", "displayName": "Garba Magenta",  "canonical": "#d6336c", "tonalRamp": ["#2c0a18","#460f26","#641637","#841d49","#a8245c","#d6336c","#e26389","#ef9cb4"] }
+    },
+    "typographyMeta": {
+      "display":  { "displayName": "Display",  "purpose": "Hero name only. One per page, tight and large." },
+      "headline": { "displayName": "Headline", "purpose": "Section/page headers and full-screen nav links." },
+      "lead":     { "displayName": "Lead (italic)", "purpose": "The italic 'said-aloud' opening statement of a section." },
+      "label":    { "displayName": "Label (mono)",  "purpose": "Section labels, kickers, tags, ledger meta. The readout voice." }
+    },
+    "shadows": [
+      { "name": "alive-glow", "value": "0 0 32px rgba(74,192,180,0.32)", "purpose": "Teal glow on a living specimen / active music cover. A state, never ambient." },
+      { "name": "cost-glow",  "value": "0 0 32px rgba(193,74,85,0.30)",  "purpose": "Blood glow on the Tower specimen. Signals weight / cost." },
+      { "name": "topbar-veil","value": "backdrop-filter: blur(14px)",      "purpose": "The only blur in the system; fixed top bar only." }
+    ],
+    "motion": [
+      { "name": "ease",   "value": "220ms cubic-bezier(0.4, 0, 0.2, 1)",  "purpose": "Default state transitions (hover, color, border)." },
+      { "name": "ease-s", "value": "600ms cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "Slower expressive easing for overlay/menu and reveals." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "375px" },
+      { "name": "md", "value": "680px" },
+      { "name": "lg", "value": "1100px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Section Label",
+      "kind": "custom",
+      "refersTo": "section-label",
+      "description": "The recurring gold mono label with a leading hairline. Replaces the banned eyebrow-kicker as a deliberate system unit.",
+      "html": "<h2 class=\"ds-section-label\">Projects</h2>",
+      "css": ".ds-section-label { display: flex; align-items: center; gap: 0.9rem; font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; font-weight: 400; letter-spacing: 0.18em; text-transform: uppercase; color: #d4a574; } .ds-section-label::before { content: ''; width: 1.6rem; height: 1px; background: #d4a574; opacity: 0.6; }"
+    },
+    {
+      "name": "Contact Link",
+      "kind": "custom",
+      "refersTo": "contact-link",
+      "description": "Signature interaction: a 1px gold underline draws in from the left on hover while text warms to gold.",
+      "html": "<a href=\"#\" class=\"ds-contact-link\">Email</a>",
+      "css": ".ds-contact-link { position: relative; font-family: 'Fraunces', Georgia, serif; font-size: 1.6rem; font-weight: 400; color: #cdd6f4; text-decoration: none; transition: color 220ms cubic-bezier(0.4,0,0.2,1); } .ds-contact-link::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 100%; height: 1px; background: #d4a574; transform: scaleX(0); transform-origin: right center; transition: transform 220ms cubic-bezier(0.4,0,0.2,1); } .ds-contact-link:hover { color: #d4a574; } .ds-contact-link:hover::after { transform: scaleX(1); transform-origin: left center; } .ds-contact-link:focus-visible { outline: 2px solid #d4a574; outline-offset: 4px; }"
+    },
+    {
+      "name": "Theme Toggle",
+      "kind": "button",
+      "refersTo": "theme-toggle",
+      "description": "Ghost circular icon control; ring and glyph warm toward gold on hover/focus.",
+      "html": "<button class=\"ds-theme-toggle\" aria-label=\"Toggle color scheme\"><span class=\"ds-toggle-dot\"></span></button>",
+      "css": ".ds-theme-toggle { display: flex; align-items: center; justify-content: center; width: 1.7rem; height: 1.7rem; padding: 0; background: none; border: 1px solid #26263a; border-radius: 50%; cursor: pointer; color: #585b70; transition: border-color 220ms ease, color 220ms ease, box-shadow 220ms ease; } .ds-theme-toggle:hover, .ds-theme-toggle:focus-visible { border-color: #d4a574; color: #d4a574; box-shadow: 0 0 0 3px rgba(212,165,116,0.12); outline: none; } .ds-toggle-dot { width: 0.6rem; height: 0.6rem; border-radius: 50%; background: currentColor; }"
+    },
+    {
+      "name": "Nav Link",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "Full-screen overlay link at Fraunces headline scale; masked and translated in with staggered delay.",
+      "html": "<span class=\"ds-nav-mask\"><a href=\"#\" class=\"ds-nav-link\">Dance</a></span>",
+      "css": ".ds-nav-mask { display: block; overflow: hidden; } .ds-nav-link { display: inline-block; font-family: 'Fraunces', Georgia, serif; font-size: clamp(2rem, 7vw, 4.25rem); font-weight: 300; line-height: 1.18; letter-spacing: -0.02em; color: #cdd6f4; text-decoration: none; transition: color 220ms cubic-bezier(0.4,0,0.2,1); } .ds-nav-link:hover { color: #d4a574; }"
+    },
+    {
+      "name": "Ledger Row",
+      "kind": "custom",
+      "refersTo": "ledger-row",
+      "description": "Work/projects as a machine-log row: date, gold glyph, title, role, tags; gold left-border draws on hover.",
+      "html": "<div class=\"ds-ledger-row\"><span class=\"ds-ledger-date\">2025</span><span class=\"ds-ledger-title\"><span class=\"ds-ledger-glyph\">›</span> IRLXR</span><span class=\"ds-ledger-role\">Engineer</span></div>",
+      "css": ".ds-ledger-row { position: relative; display: flex; align-items: baseline; gap: 1.5rem; padding: 1rem 1rem 1rem 1.25rem; border-top: 1px solid #1b1b2a; font-family: 'DM Sans', sans-serif; } .ds-ledger-row::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background: #d4a574; transform: scaleY(0); transform-origin: bottom; transition: transform 220ms cubic-bezier(0.16,1,0.3,1); } .ds-ledger-row:hover::before { transform: scaleY(1); transform-origin: top; } .ds-ledger-date { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; letter-spacing: 0.05em; color: #585b70; } .ds-ledger-title { font-family: 'Fraunces', serif; font-size: 1.15rem; color: #cdd6f4; } .ds-ledger-glyph { color: #d4a574; } .ds-ledger-role { font-family: 'JetBrains Mono', monospace; font-size: 0.66rem; letter-spacing: 0.12em; text-transform: uppercase; color: #9399b2; margin-left: auto; }"
+    },
+    {
+      "name": "Specimen Card",
+      "kind": "card",
+      "refersTo": "specimen-card",
+      "description": "Worldbuilding/Taste specimen: no card chrome, a glowing left rule and kind-tag in the specimen's glow color. Never nested.",
+      "html": "<article class=\"ds-specimen\" style=\"--glow:#4ac0b4\"><h3 class=\"ds-specimen-name\">Lucky Boy</h3><span class=\"ds-specimen-kind\">organism · viral</span><p class=\"ds-specimen-logic\">A body that rewrites itself faster than it can heal.</p></article>",
+      "css": ".ds-specimen { position: relative; padding: 0.2rem 0 0.2rem 0; } .ds-specimen-name { font-family: 'Fraunces', serif; font-size: 2rem; font-weight: 400; line-height: 1; letter-spacing: -0.02em; color: #cdd6f4; text-shadow: 0 0 28px color-mix(in srgb, var(--glow) 45%, transparent); } .ds-specimen-kind { display: inline-block; margin-top: 0.5rem; font-family: 'JetBrains Mono', monospace; font-size: 0.58rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--glow); } .ds-specimen-logic { margin: 1.4rem 0 0; padding-left: 1rem; border-left: 1px solid var(--glow); font-family: 'Fraunces', serif; font-style: italic; font-weight: 300; font-size: 1.1rem; line-height: 1.5; color: #cdd6f4; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Quiet Forge",
+    "overview": "A dark workshop. The page is cooled metal — near-black inks borrowed from Catppuccin Mocha — and the design only lights up where work is happening: a strip of gold under a section label, a single hover that draws a line, the teal glow on a specimen that's alive. The engineer comes first; mono labels read like machine readouts, the Fraunces serif sets the human statements the engineer chooses to make out loud. The site is the proof — its restraint and finish are the portfolio. The forge is quiet, not cold: warmth comes from the gold's hand-mixed tone and Fraunces' optical contrast. One room breaks the rule on purpose — the Dance/Garba surface detonates into marigold, magenta, and indigo — and that contrast only reads because everywhere else holds restraint.",
+    "keyCharacteristics": [
+      "Dark-first (#11111b); light 'ritual paper' parchment is secondary; both pass AA independently.",
+      "Gold is rationed — rare and earned, never structural wallpaper.",
+      "Mono for labels/readouts, serif for statements, sans for prose — three voices, one hand.",
+      "Motion serves comprehension and atmosphere; never scroll-jacks; always has a reduced-motion path.",
+      "Legible to a stranger in seconds; layered with depth for the friend who keeps scrolling."
+    ],
+    "rules": [
+      { "name": "The Earned-Gold Rule", "body": "Gold appears on ≤10% of any screen and only on ritual moments: a section label, the active link, one hover, a focus ring. Its scarcity is the entire effect.", "section": "colors" },
+      { "name": "The Containment Rule", "body": "The Garba trio and Taste mauve are quarantined to their own rooms (Dance; Books/Taste). They never leak into the shared chrome.", "section": "colors" },
+      { "name": "The Three-Voices Rule", "body": "Mono labels, serif statements, sans prose. Each has one job; mixing the voices muddies the hand.", "section": "typography" },
+      { "name": "The Tight-Display Rule", "body": "Display and headline serif always set with negative tracking (≥ −0.04em floor) and sub-1.0 line-height. Loose default-tracked large serif reads as a stock template.", "section": "typography" },
+      { "name": "The Glow-Not-Drop Rule", "body": "If you reach for a grey box-shadow to lift a card, climb the ink ramp instead. Shadows in this system are colored and meaningful (alive / cost), never neutral and decorative.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do ration gold to ritual moments only — ≤10% of any screen.",
+      "Do keep the three type voices separate: mono labels, Fraunces statements, DM Sans prose.",
+      "Do set display/headline serif tight — negative tracking (≥ −0.04em floor), sub-1.0 line-height.",
+      "Do convey depth by climbing the ink ramp; reserve box-shadow for meaningful teal/blood glows.",
+      "Do verify --ash-dim (#9399b2) hits ≥4.5:1 on its ink background; keep --ash-faint for large/non-essential text only.",
+      "Do give every animation a prefers-reduced-motion alternative and keep content visible by default.",
+      "Do quarantine the Garba trio and Taste mauve to their own pages."
+    ],
+    "donts": [
+      "Don't build a dev-bro terminal portfolio — no neon-green-on-black, no matrix rain.",
+      "Don't ship overdesigned award-site excess — no scroll-jacking, no motion that buries content.",
+      "Don't put an all-caps tracked eyebrow above every section; the gold section-label is the one deliberate unit.",
+      "Don't add 01/02/03 numbered section markers unless the content is a genuine ordered sequence.",
+      "Don't use gradient text or border-left/right > 1px as a colored accent stripe.",
+      "Don't use glassmorphism anywhere except the fixed top bar.",
+      "Don't introduce cream/sand/parchment as the dark mode's surface; the canonical mode is ink near-black.",
+      "Don't nest specimen cards or let any accent leak outside its room."
+    ]
+  }
+}

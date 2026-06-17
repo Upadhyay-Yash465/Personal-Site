@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>(function(){try{var t=localStorage.getItem('theme')||(matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%20fill='none'%20stroke='%23d4a574'%20stroke-width='5'%3E%3Ccircle%20cx='50'%20cy='50'%20r='44'/%3E%3Ccircle%20cx='50'%20cy='50'%20r='28'/%3E%3Cpath%20d='M50%206V94M6%2050H94'/%3E%3C/svg%3E">
+  <meta name="description" content="What Yash Upadhyay reads and rereads — and the two worlds he's building.">
+  <title>Books — Yash Upadhyay</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400;1,9..144,500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="scroll-progress" aria-hidden="true"></div>
+
+  <header class="topbar" role="banner">
+    <button class="menu-btn" id="menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="nav-overlay">
+      <span></span><span></span><span></span>
+    </button>
+    <a class="brand" href="index.html">Yash Upadhyay</a>
+    <button class="theme-toggle" aria-label="Toggle color scheme" title="Toggle light / dark mode">
+      <span class="theme-toggle-icon" aria-hidden="true"></span>
+    </button>
+  </header>
+
+  <nav class="nav-overlay" id="nav-overlay" aria-hidden="true" aria-label="Primary">
+    <ol class="nav-list">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="think.html">How I Think</a></li>
+      <li><a href="dance.html">Dance</a></li>
+      <li><a href="books.html" aria-current="page">Books</a></li>
+      <li><a href="music.html">Music</a></li>
+      <li><a href="projects.html">Projects</a></li>
+    </ol>
+  </nav>
+
+  <main id="main">
+    <div class="page-header">
+      <p class="page-kicker">Reading &amp; Rereading</p>
+      <h1 class="page-title">Books</h1>
+    </div>
+
+    <section id="books" class="carousel-section" aria-label="Books carousel">
+      <div class="carousel-section-head">
+        <p class="carousel-desc">The taste behind the worlds — drag through. Power systems with internal logic, sacrifice, identity cost, the body as site of transformation.</p>
+      </div>
+      <div class="carousel-outer">
+        <div class="carousel-perspective">
+          <ul class="carousel-cards books-carousel" id="books-carousel">
+            <li class="carousel-card" data-idx="0">
+              <div class="cover-wrap"><img class="cover-art" src="https://covers.openlibrary.org/b/isbn/9780765382030-L.jpg" alt="The Three-Body Problem" loading="lazy"></div>
+              <div class="cover-meta"><p class="cover-title">The Three-Body Problem</p><p class="cover-sub">Liu Cixin</p></div>
+            </li>
+            <li class="carousel-card" data-idx="1">
+              <div class="cover-wrap"><img class="cover-art" src="https://covers.openlibrary.org/b/isbn/9780593135204-L.jpg" alt="Project Hail Mary" loading="lazy"></div>
+              <div class="cover-meta"><p class="cover-title">Project Hail Mary</p><p class="cover-sub">Andy Weir</p></div>
+            </li>
+            <li class="carousel-card" data-idx="2">
+              <div class="cover-wrap"><div class="cover-thumb"><svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 016.5 17H20M4 19.5A2.5 2.5 0 004 22h16v-5H6.5M4 19.5V5a2 2 0 012-2h14v12H6.5"/></svg></div></div>
+              <div class="cover-meta"><p class="cover-title">Reverend Insanity</p><p class="cover-sub">Gu Zhen Ren</p></div>
+            </li>
+            <li class="carousel-card" data-idx="3">
+              <div class="cover-wrap"><div class="cover-thumb"><svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 016.5 17H20M4 19.5A2.5 2.5 0 004 22h16v-5H6.5M4 19.5V5a2 2 0 012-2h14v12H6.5"/></svg></div></div>
+              <div class="cover-meta"><p class="cover-title">The Climber</p><p class="cover-sub">Eugen Ciceu</p></div>
+            </li>
+            <li class="carousel-card" data-idx="4">
+              <div class="cover-wrap"><div class="cover-thumb"><svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 016.5 17H20M4 19.5A2.5 2.5 0 004 22h16v-5H6.5M4 19.5V5a2 2 0 012-2h14v12H6.5"/></svg></div></div>
+              <div class="cover-meta"><p class="cover-title">—</p><p class="cover-sub">Add more</p></div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="worlds" class="worlds" aria-labelledby="worlds-heading">
+      <div class="worlds-head">
+        <h2 id="worlds-heading" class="section-label">What I'm Building in My Head</h2>
+        <p class="worlds-intro">Two original universes in active development. Not a portfolio piece — an open window into how I think. Both share a <em>ritual + body + concept</em> trinity: identity under pressure, the cost of becoming something, hollowness.</p>
+      </div>
+
+      <div class="specimens">
+        <article class="specimen specimen--viral">
+          <header class="specimen-head">
+            <p class="specimen-name">Lucky Boy</p>
+            <p class="specimen-kind">Universe &middot; Ink-based</p>
+          </header>
+          <p class="specimen-logic">Virus-bugs consume insight. The enriched ink is tattooed onto fighters. Each person wields their personal interpretation of a concept.</p>
+          <p class="specimen-note">[lucky-boy-note — placeholder: ink-rooted, identity-internal, the system's deeper logic.]</p>
+          <ul class="specimen-tags"><li>ink</li><li>identity</li><li>internal</li><li>concept-wielding</li></ul>
+        </article>
+
+        <span class="specimen-bridge" aria-hidden="true">
+          <span>ritual</span><span class="bridge-dot">·</span><span>body</span><span class="bridge-dot">·</span><span>concept</span>
+        </span>
+
+        <article class="specimen specimen--blood">
+          <header class="specimen-head">
+            <p class="specimen-name">Tower</p>
+            <p class="specimen-kind">Universe &middot; Sacrifice-based</p>
+          </header>
+          <p class="specimen-logic">Sacrifice mythical beast body parts in rituals to strengthen the body or the environment.</p>
+          <p class="specimen-note">[tower-note — placeholder: the cost economy, what's given up, the ritual frame.]</p>
+          <ul class="specimen-tags"><li>ritual</li><li>body</li><li>sacrifice</li><li>cost</li></ul>
+        </article>
+      </div>
+
+      <div class="taste">
+        <p class="taste-label">A field guide to my taste</p>
+        <div class="taste-grid">
+          <div class="taste-card">
+            <p class="taste-card-head">Fiction</p>
+            <p class="taste-card-body">Power systems with internal logic. Sacrifice, identity cost, the body as site of transformation.</p>
+            <p class="taste-card-refs">The Climber &middot; Reverend Insanity &middot; Three-Body Problem &middot; Project Hail Mary</p>
+          </div>
+          <div class="taste-card"><p class="taste-card-head">Visual</p><p class="taste-card-body">Biopunk, ritual, ink. Deliberate and dark.</p></div>
+          <div class="taste-card"><p class="taste-card-head">Culture</p><p class="taste-card-body">Garba-Raas. South Asian diaspora expression.</p></div>
+          <div class="taste-card"><p class="taste-card-head">Tech</p><p class="taste-card-body">Catppuccin Mocha. Hyprland. Opinionated minimalism.</p></div>
+          <div class="taste-card"><p class="taste-card-head">Food</p><p class="taste-card-body">I bake my own sourdough. That's craft — the slowest thing I do.</p></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <p>&copy; 2026 Yash Upadhyay &middot; ink, ritual, systems that fail</p>
+  </footer>
+
+  <script src="main.js"></script>
+  <script src="carousel.js"></script>
+</body>
+</html>

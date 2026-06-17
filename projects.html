@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>(function(){try{var t=localStorage.getItem('theme')||(matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%20fill='none'%20stroke='%23d4a574'%20stroke-width='5'%3E%3Ccircle%20cx='50'%20cy='50'%20r='44'/%3E%3Ccircle%20cx='50'%20cy='50'%20r='28'/%3E%3Cpath%20d='M50%206V94M6%2050H94'/%3E%3C/svg%3E">
+  <meta name="description" content="Yash Upadhyay's work and projects — full-stack, ML, and coaching.">
+  <title>Projects — Yash Upadhyay</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400;1,9..144,500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="scroll-progress" aria-hidden="true"></div>
+
+  <header class="topbar" role="banner">
+    <button class="menu-btn" id="menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="nav-overlay">
+      <span></span><span></span><span></span>
+    </button>
+    <a class="brand" href="index.html">Yash Upadhyay</a>
+    <button class="theme-toggle" aria-label="Toggle color scheme" title="Toggle light / dark mode">
+      <span class="theme-toggle-icon" aria-hidden="true"></span>
+    </button>
+  </header>
+
+  <nav class="nav-overlay" id="nav-overlay" aria-hidden="true" aria-label="Primary">
+    <ol class="nav-list">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="think.html">How I Think</a></li>
+      <li><a href="dance.html">Dance</a></li>
+      <li><a href="books.html">Books</a></li>
+      <li><a href="music.html">Music</a></li>
+      <li><a href="projects.html" aria-current="page">Projects</a></li>
+    </ol>
+  </nav>
+
+  <main id="main">
+    <div class="page-header">
+      <p class="page-kicker">Ledger</p>
+      <h1 class="page-title">Projects</h1>
+    </div>
+
+    <section class="ledger" aria-label="Work and projects">
+      <div class="ledger-head">
+        <p class="ledger-intro">Shipped systems serving 50,000+ users. Contracting across an early-stage startup and a production platform, plus what I've built and coached on my own.</p>
+      </div>
+
+      <ol class="ledger-rows">
+        <li class="ledger-row">
+          <span class="ledger-date">2026 · May–Jun</span>
+          <div class="ledger-body">
+            <p class="ledger-title"><span class="ledger-glyph" aria-hidden="true">&rsaquo;</span> IRLXR <span class="ledger-role">— Full-Stack Software Engineering Contractor</span></p>
+            <p class="ledger-desc">Built admin dashboard modules — a full transaction ledger with UI, data-export tools, user management — and architected enforced super-admin RBAC across all sensitive routes. Engineered a high-performance property search over 5,000+ listings with indexing, caching, map-pin clustering, and pagination.</p>
+            <ul class="ledger-tags"><li>React</li><li>Node.js</li><li>RBAC</li><li>Search at scale</li></ul>
+          </div>
+        </li>
+        <li class="ledger-row">
+          <span class="ledger-date">2026 · Mar–Apr</span>
+          <div class="ledger-body">
+            <p class="ledger-title"><span class="ledger-glyph" aria-hidden="true">&rsaquo;</span> Employers 4 Change <span class="ledger-role">— AI/ML Engineer &amp; Full-Stack Developer</span></p>
+            <p class="ledger-desc">Engineered a multi-role auth microservice (Student / Employer / School) with Firebase Auth, OTP-based MFA, and RBAC across ~20 routes. Designed a two-phase ML matching pipeline in Python/FastAPI — 11 hard filters and a 5-component cosine-similarity scoring model. Established testing standards adopted across the codebase.</p>
+            <ul class="ledger-tags"><li>FastAPI</li><li>Firebase</li><li>ML matching</li><li>Testing</li></ul>
+          </div>
+        </li>
+        <li class="ledger-row">
+          <span class="ledger-date">2025 · Oct</span>
+          <div class="ledger-body">
+            <p class="ledger-title"><span class="ledger-glyph" aria-hidden="true">&rsaquo;</span> AESOP <span class="ledger-role">— AI Public Speaking Coach · Knighthacks</span></p>
+            <p class="ledger-desc">Full-stack AI app for real-time speech evaluation. Whisper speech-to-text, vocal analysis (pitch, pace, volume), and OpenCV facial-emotion detection fused into structured insight, with Gemini generating personalized coaching. The hard part was the output rubric, not the API call.</p>
+            <ul class="ledger-tags"><li>Whisper</li><li>OpenCV</li><li>Gemini</li><li>FastAPI</li></ul>
+          </div>
+        </li>
+        <li class="ledger-row">
+          <span class="ledger-date">2024 · 2026</span>
+          <div class="ledger-body">
+            <p class="ledger-title"><span class="ledger-glyph" aria-hidden="true">&rsaquo;</span> Palm Coast Speech &amp; Debate <span class="ledger-role">— Founder, Head of Coaching</span></p>
+            <p class="ledger-desc">Coordinate 18+ students across 7 districts; 125+ custom sessions and 60+ in-person workshops. Students placed Top 6 at 2025 Florida State finals, Champion at the 2024 UCF tournament, and a 2025 Florida Novice State Champion. Speech and debate is where I learned to argue, structure, and not waste words.</p>
+            <ul class="ledger-tags"><li>Coaching</li><li>Argument structure</li><li>Founder</li></ul>
+          </div>
+        </li>
+      </ol>
+    </section>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <p>&copy; 2026 Yash Upadhyay &middot; ink, ritual, systems that fail</p>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
