@@ -227,35 +227,35 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor i
 # ===== PROJECTS (projects.html) ================================
 
 ### projects.kicker
-Lorem Ipsum
+Ledger
 
 ### projects.title
 Projects
 
 ### projects.intro
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+Shipped systems serving 50,000+ users. Contracting across an early-stage startup and a production platform, plus what I've built and coached on my own.
 
 ### projects.ledger []
-- date: 2026 · Lorem
-  title: Lorem Ipsum
-  role: Dolor sit amet consectetur
-  desc: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
-  tags: Lorem, Ipsum, Dolor, Sit
-- date: 2026 · Ipsum
-  title: Dolor Sit Amet
-  role: Consectetur adipiscing elit
-  desc: Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit.
-  tags: Consectetur, Adipiscing, Elit, Tempor
-- date: 2025 · Dolor
-  title: Tempor Incididunt
-  role: Ut labore et dolore · Magna
-  desc: Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.
-  tags: Labore, Dolore, Magna, Aliqua
+- date: 2026 · May–Jun
+  title: IRLXR
+  role: Full-Stack Software Engineering Contractor
+  desc: Built admin dashboard modules — a full transaction ledger with UI, data-export tools, user management — and architected enforced super-admin RBAC across all sensitive routes. Engineered a high-performance property search over 5,000+ listings with indexing, caching, map-pin clustering, and pagination.
+  tags: React, Node.js, RBAC, Search at scale
+- date: 2026 · Mar–Apr
+  title: Employers 4 Change
+  role: AI/ML Engineer & Full-Stack Developer
+  desc: Engineered a multi-role auth microservice (Student / Employer / School) with Firebase Auth, OTP-based MFA, and RBAC across ~20 routes. Designed a two-phase ML matching pipeline in Python/FastAPI — 11 hard filters and a 5-component cosine-similarity scoring model. Established testing standards adopted across the codebase.
+  tags: FastAPI, Firebase, ML matching, Testing
+- date: 2025 · Oct
+  title: [AESOP](speech-coach.html)
+  role: AI Public Speaking Coach · Knighthacks
+  desc: Full-stack AI app for real-time speech evaluation. Whisper speech-to-text, vocal analysis (pitch, pace, volume), and OpenCV facial-emotion detection fused into structured insight, with Gemini generating personalized coaching. The hard part was the output rubric, not the API call.
+  tags: Whisper, OpenCV, Gemini, FastAPI
 - date: 2024 · 2026
-  title: Voluptate Velit
-  role: Esse cillum, Dolore eu fugiat
-  desc: Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nemo enim ipsam voluptatem quia voluptas.
-  tags: Cupidatat, Proident, Officia
+  title: Palm Coast Speech & Debate
+  role: Founder, Head of Coaching
+  desc: Coordinate 18+ students across 7 districts; 125+ custom sessions and 60+ in-person workshops. Students placed Top 6 at 2025 Florida State finals, Champion at the 2024 UCF tournament, and a 2025 Florida Novice State Champion. Speech and debate is where I learned to argue, structure, and not waste words.
+  tags: Coaching, Argument structure, Founder
 
 
 # ===== AESOP / SPEECH-COACH (speech-coach.html) =================
