@@ -23,6 +23,47 @@
     )
   );
 
+  // ── Work-in-progress notice (once per browsing session) ───────
+  (function wipNotice() {
+    const SEEN = 'wip-seen';
+    if (sessionStorage.getItem(SEEN)) return;
+
+    const overlay = document.createElement('div');
+    overlay.className = 'wip-overlay';
+    overlay.setAttribute('role', 'dialog');
+    overlay.setAttribute('aria-modal', 'true');
+    overlay.setAttribute('aria-labelledby', 'wip-title');
+    overlay.innerHTML =
+      '<div class="wip-card">' +
+        '<p class="wip-kicker">Heads up</p>' +
+        '<h2 id="wip-title" class="wip-title">Work in progress</h2>' +
+        '<p class="wip-body">This site is very much under construction — the copy is all ' +
+        'placeholder lorem ipsum for now. Don’t judge if you see any bullcrap. ' +
+        'Real words coming soon.</p>' +
+        '<button type="button" class="wip-btn">Enter anyway</button>' +
+      '</div>';
+
+    const close = () => {
+      sessionStorage.setItem(SEEN, '1');
+      overlay.classList.remove('is-open');
+      setTimeout(() => overlay.remove(), 320);
+      document.removeEventListener('keydown', onKey);
+    };
+    const onKey = (e) => { if (e.key === 'Escape') close(); };
+
+    overlay.addEventListener('click', (e) => { if (e.target === overlay) close(); });
+    document.addEventListener('keydown', onKey);
+
+    const mount = () => {
+      document.body.appendChild(overlay);
+      overlay.querySelector('.wip-btn').addEventListener('click', close);
+      requestAnimationFrame(() => overlay.classList.add('is-open'));
+      overlay.querySelector('.wip-btn').focus();
+    };
+    if (document.body) mount();
+    else document.addEventListener('DOMContentLoaded', mount, { once: true });
+  }());
+
   // ── Hamburger menu / nav overlay ──────────────────────────────
   const menuBtn = document.getElementById('menu-btn');
   const overlay = document.getElementById('nav-overlay');

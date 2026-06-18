@@ -124,44 +124,88 @@
         onActivate(parseInt(best.dataset.idx, 10), best);
       }
     }
-    function snapToNearest() {
-      const best = findNearest();
-      if (!best) return;
-      const target = best.offsetLeft + best.offsetWidth / 2 - scrollContainer.clientWidth / 2;
-      scrollContainer.scrollTo({ left: target, behavior: 'smooth' });
-      setTimeout(() => { scrollContainer.style.scrollSnapType = ''; }, 500);
-    }
-
     scrollContainer.addEventListener('scroll', pickCenter, { passive: true });
     requestAnimationFrame(pickCenter);
 
     let isDown = false, startX = 0, startScroll = 0;
-    let velX = 0, lastX = 0, lastT = 0, rafId = null;
+    let velX = 0, lastX = 0, lastT = 0;
+    let target = scrollContainer.scrollLeft;
+    let raf = null, settling = false;
 
-    function momentum() {
-      if (Math.abs(velX) < 0.5) { snapToNearest(); return; }
-      velX *= 0.88;
-      scrollContainer.scrollLeft += velX;
-      rafId = requestAnimationFrame(momentum);
+    const maxScroll = () => scrollContainer.scrollWidth - scrollContainer.clientWidth;
+    const clampX = (v) => v < 0 ? 0 : (v > maxScroll() ? maxScroll() : v);
+    const nearestCenter = () => {
+      const best = findNearest();
+      return best ? clampX(best.offsetLeft + best.offsetWidth / 2 - scrollContainer.clientWidth / 2) : null;
+    };
+
+    // One rAF lerp toward `target` drives wheel, momentum, and snap — so every
+    // input glides instead of jumping. EASE: higher = snappier, lower = floatier.
+    const EASE = 0.16;
+    function tick() {
+      const diff = target - scrollContainer.scrollLeft;
+      if (Math.abs(diff) < 0.5) {
+        scrollContainer.scrollLeft = target;
+        raf = null;
+        settle();
+        return;
+      }
+      scrollContainer.scrollLeft += diff * EASE;
+      raf = requestAnimationFrame(tick);
     }
-    scrollContainer.addEventListener('mousedown', e => {
-      if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
-      isDown = true; startX = e.pageX; startScroll = scrollContainer.scrollLeft;
-      velX = 0; lastX = e.pageX; lastT = performance.now();
+    const run = () => { if (raf == null) raf = requestAnimationFrame(tick); };
+    function glideTo(v) {
       scrollContainer.style.scrollSnapType = 'none';
-    });
-    const endDrag = () => { if (!isDown) return; isDown = false; rafId = requestAnimationFrame(momentum); };
-    scrollContainer.addEventListener('mouseleave', endDrag);
-    scrollContainer.addEventListener('mouseup',    endDrag);
-    scrollContainer.addEventListener('mousemove', e => {
-      if (!isDown) return;
+      target = clampX(v);
+      run();
+    }
+    // When motion stops, ease once more to the nearest card centre, then re-enable CSS snap.
+    function settle() {
+      if (settling) { settling = false; scrollContainer.style.scrollSnapType = ''; return; }
+      const c = nearestCenter();
+      if (c != null && Math.abs(c - scrollContainer.scrollLeft) > 1) {
+        settling = true; target = c; run();
+      } else {
+        scrollContainer.style.scrollSnapType = '';
+      }
+    }
+
+    // ── Wheel / trackpad — accumulate into target, lerp smooths it ──
+    scrollContainer.addEventListener('wheel', (e) => {
+      const d = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
+      if (!d) return;
       e.preventDefault();
-      scrollContainer.scrollLeft = startScroll - (e.pageX - startX) * 1.4;
-      const now = performance.now();
-      const dt  = now - lastT;
-      if (dt > 0) velX = -(e.pageX - lastX) / dt * 12;
-      lastX = e.pageX; lastT = now;
-    });
+      glideTo(target + d);
+    }, { passive: false });
+
+    // ── Drag (mouse + touch) — direct while held, momentum glide on release ──
+    const down = (x) => {
+      if (raf != null) { cancelAnimationFrame(raf); raf = null; }
+      isDown = true; startX = x; startScroll = scrollContainer.scrollLeft;
+      target = startScroll; velX = 0; lastX = x; lastT = performance.now();
+      scrollContainer.style.scrollSnapType = 'none';
+    };
+    const move = (x) => {
+      if (!isDown) return;
+      scrollContainer.scrollLeft = clampX(startScroll - (x - startX) * 1.6);
+      target = scrollContainer.scrollLeft;
+      const now = performance.now(), dt = now - lastT;
+      if (dt > 0) velX = -(x - lastX) / dt * 16;
+      lastX = x; lastT = now;
+    };
+    const up = () => {
+      if (!isDown) return;
+      isDown = false;
+      glideTo(scrollContainer.scrollLeft + velX * 10);
+    };
+
+    scrollContainer.addEventListener('mousedown', (e) => down(e.pageX));
+    scrollContainer.addEventListener('mousemove', (e) => { if (isDown) { e.preventDefault(); move(e.pageX); } });
+    scrollContainer.addEventListener('mouseup', up);
+    scrollContainer.addEventListener('mouseleave', up);
+    scrollContainer.addEventListener('touchstart', (e) => down(e.touches[0].pageX), { passive: true });
+    scrollContainer.addEventListener('touchmove', (e) => move(e.touches[0].pageX), { passive: true });
+    scrollContainer.addEventListener('touchend', up);
   }
 
   function onMusicActivate(idx) {

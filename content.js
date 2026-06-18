@@ -94,14 +94,14 @@
         `<p class="tenet-note">${inline(it.note)}</p></div></li>`).join(''),
 
     'books.list': (items) =>
-      items.map((it, i) => {
+      items.map(it => {
         const src = it.isbn ? `https://covers.openlibrary.org/b/isbn/${it.isbn}-L.jpg` : it.cover;
         const art = src
-          ? `<img class="cover-art" src="${src}" alt="${it.title}" loading="lazy">`
-          : BOOK_THUMB;
-        return `<li class="carousel-card" data-idx="${i}"><div class="cover-wrap">${art}</div>` +
-          `<div class="cover-meta"><p class="cover-title">${inline(it.title)}</p>` +
-          `<p class="cover-sub">${inline(it.sub)}</p></div></li>`;
+          ? `<img class="book-cover" src="${src}" alt="${it.title}" loading="lazy">`
+          : '<div class="book-cover book-cover--thumb"><svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 016.5 17H20M4 19.5A2.5 2.5 0 004 22h16v-5H6.5M4 19.5V5a2 2 0 012-2h14v12H6.5"/></svg></div>';
+        return `<li class="book-card"><div class="book-cover-wrap">${art}</div>` +
+          `<p class="book-title">${inline(it.title)}</p>` +
+          `<p class="book-author">${inline(it.sub)}</p></li>`;
       }).join(''),
 
     'books.worlds.items': (items) =>
@@ -130,6 +130,20 @@
         `<p class="ledger-desc">${inline(it.desc)}</p>` +
         `<ul class="ledger-tags">${(it.tags || []).map(t => `<li>${t}</li>`).join('')}</ul>` +
         `</div></li>`).join(''),
+
+    'projects.builds': (items) =>
+      items.map(it => {
+        const title = it.href
+          ? `<a class="project-link" href="${it.href}">${inline(it.title)}</a>`
+          : inline(it.title);
+        return `<li class="ledger-row project-row"><span class="ledger-date">${inline(it.date)}</span>` +
+          `<div class="ledger-body"><p class="ledger-title">` +
+          `<span class="ledger-glyph" aria-hidden="true">&rsaquo;</span> ${title} ` +
+          `<span class="ledger-role">— ${inline(it.role)}</span></p>` +
+          `<p class="ledger-desc">${inline(it.desc)}</p>` +
+          `<ul class="ledger-tags">${(it.tags || []).map(t => `<li>${t}</li>`).join('')}</ul>` +
+          `</div></li>`;
+      }).join(''),
   };
 
   // ── Apply to the DOM ─────────────────────────────────────────

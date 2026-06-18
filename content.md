@@ -28,7 +28,7 @@
 # ===== HOME (index.html) =======================================
 
 ### home.hero.school
-Lorem ipsum · dolor 2029
+Industrial Engineering · UCF 2029
 
 ### home.roles []
 - text: lorem ipsum
@@ -37,7 +37,7 @@ Lorem ipsum · dolor 2029
 - text: adipiscing elit
 
 ### home.about.label
-Lorem
+Hi! Welcome to my site.
 
 ### home.about.lead
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -127,63 +127,31 @@ Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deseru
 # ===== BOOKS (books.html) ======================================
 
 ### books.kicker
-Lorem Ipsum
+My Favorite Titles
 
 ### books.title
 Books
 
 ### books.carousel.desc
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+I'm an avid reader, I've been reading books since I was a little kid. Some of my favorite memories are from when my mom would take me to the library and let me pick out however many books I wanted. It actually got
+  to the point where she had to put a limit on how many books I could get. 
+Even as I grew older, my love for literature never went away, so I want to share some of my favorite titles with you! 
+Each one of them have changed the way how I look at the world, and if you decide to read them, I hope they do for you as well! 
 
 ### books.list []
-- title: Lorem Ipsum
-  sub: Dolor Sit
+- title: Three Body Problem
+  sub: Cixin Liu
   isbn: 9780765382030
-- title: Consectetur Elit
-  sub: Adipiscing
+- title: Project Hail Mary
+  sub: Andy Weir
   isbn: 9780593135204
-- title: Tempor Incididunt
-  sub: Ut Labore
-- title: Dolore Magna
-  sub: Aliqua
-- title: —
-  sub: Lorem
+- title: Portrait of the Artist as a Young Man
+  sub: James Joyce
+  isbn: 9780140185539
+- title: Babel
+  sub: R.F. Kuang
+  isbn: 9780008501853
 
-### books.worlds.label
-Lorem Ipsum Dolor Sit
-
-### books.worlds.intro
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut *labore et dolore* magna aliqua: ut enim ad minim veniam, quis nostrud exercitation.
-
-### books.worlds.items []
-- variant: viral
-  name: Lorem Ipsum
-  kind: Dolor · Sit-amet
-  logic: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.
-  note: Ut enim ad minim veniam, quis nostrud exercitation ullamco.
-  tags: lorem, ipsum, dolor, sit
-- variant: blood
-  name: Dolor Sit
-  kind: Amet · Consectetur
-  logic: Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat.
-  note: Excepteur sint occaecat cupidatat non proident sunt in culpa.
-  tags: consectetur, adipiscing, elit, tempor
-
-### books.taste.label
-Lorem ipsum dolor sit amet
-
-### books.taste.items []
-- head: Lorem
-  body: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.
-  refs: Lorem · Ipsum · Dolor · Sit Amet
-- head: Ipsum
-  body: Consectetur adipiscing elit, sed do eiusmod tempor incididunt.
-- head: Dolor
-  body: Ut labore et dolore magna aliqua, ut enim ad minim veniam.
-- head: Sit
-  body: Quis nostrud exercitation ullamco laboris nisi ut aliquip.
-- head: Amet
-  body: Duis aute irure dolor in reprehenderit in voluptate velit.
 
 
 # ===== MUSIC (music.html) ======================================
@@ -230,10 +198,13 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor i
 Ledger
 
 ### projects.title
-Work Experience
+Projects
 
 ### projects.intro
-Shipped systems serving 50,000+ users. Contracting across an early-stage startup and a production platform, plus what I've built and coached on my own.
+Shipped systems serving 50,000+ users. Contracting across an early-stage startup and a production platform, plus coaching work I've led on my own.
+
+### projects.builds-intro
+Things I've designed and shipped end to end — not contract work, not coaching.
 
 ### projects.ledger []
 - date: 2026 · May–Jun
@@ -246,16 +217,19 @@ Shipped systems serving 50,000+ users. Contracting across an early-stage startup
   role: AI/ML Engineer & Full-Stack Developer
   desc: Engineered a multi-role auth microservice (Student / Employer / School) with Firebase Auth, OTP-based MFA, and RBAC across ~20 routes. Designed a two-phase ML matching pipeline in Python/FastAPI — 11 hard filters and a 5-component cosine-similarity scoring model. Established testing standards adopted across the codebase.
   tags: FastAPI, Firebase, ML matching, Testing
-- date: 2025 · Oct
-  title: [AESOP](speech-coach.html)
-  role: AI Public Speaking Coach · Knighthacks
-  desc: Full-stack AI app for real-time speech evaluation. Whisper speech-to-text, vocal analysis (pitch, pace, volume), and OpenCV facial-emotion detection fused into structured insight, with Gemini generating personalized coaching. The hard part was the output rubric, not the API call.
-  tags: Whisper, OpenCV, Gemini, FastAPI
 - date: 2024 · 2026
   title: Palm Coast Speech & Debate
   role: Founder, Head of Coaching
   desc: Coordinate 18+ students across 7 districts; 125+ custom sessions and 60+ in-person workshops. Students placed Top 6 at 2025 Florida State finals, Champion at the 2024 UCF tournament, and a 2025 Florida Novice State Champion. Speech and debate is where I learned to argue, structure, and not waste words.
   tags: Coaching, Argument structure, Founder
+
+### projects.builds []
+- date: 2025 · Oct
+  title: AESOP
+  href: speech-coach.html
+  role: AI Public Speaking Coach · Knighthacks
+  desc: Full-stack AI app for real-time speech evaluation. Whisper speech-to-text, vocal analysis (pitch, pace, volume), and OpenCV facial-emotion detection fused into structured insight, with Gemini generating personalized coaching. The hard part was the output rubric, not the API call.
+  tags: Whisper, OpenCV, Gemini, FastAPI
 
 
 # ===== AESOP / SPEECH-COACH (speech-coach.html) =================

@@ -474,7 +474,7 @@ body.home.js-cover .scroll-cue {
   to   { opacity: 1; transform: translateY(0);    filter: blur(0); }
 }
 @supports (animation-timeline: view()) {
-  .about, .manifesto, .worlds, .ledger, .contact, .garba-inner > * {
+  .about, .manifesto, .worlds, .ledger, .project-builds, .contact, .garba-inner > * {
     animation: section-reveal linear both;
     animation-timeline: view();
     animation-range: entry 0% entry 30%;
@@ -615,7 +615,7 @@ body.home.js-cover .scroll-cue {
    LEDGER — work / projects as terminal rows
    ════════════════════════════════════════════════════════════ */
 
-.ledger { max-width: var(--max-width); margin: 0 auto; padding: 3rem var(--gutter) 7rem; }
+.ledger { max-width: var(--max-width); margin: 0 auto; padding: 3rem var(--gutter) 4rem; }
 .ledger-head { max-width: 56ch; margin-bottom: 3rem; }
 .ledger-intro { font-size: 0.95rem; line-height: 1.8; color: var(--ash-dim); margin-top: 0.5rem; }
 .ledger-rows { list-style: none; }
@@ -631,6 +631,34 @@ body.home.js-cover .scroll-cue {
 .ledger-tags { list-style: none; display: flex; flex-wrap: wrap; gap: 0.4rem; }
 .ledger-tags li { font-family: var(--font-mono); font-size: 0.58rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ash-dim); border: 1px solid var(--border); padding: 0.2rem 0.55rem; transition: border-color var(--ease), color var(--ease); }
 .ledger-row:hover .ledger-tags li { border-color: var(--gold-deep); color: var(--gold); }
+
+.project-builds {
+  max-width: var(--max-width); margin: 0 auto;
+  padding: 4rem var(--gutter) 7rem;
+  border-top: 1px solid var(--border);
+}
+.project-builds-head { max-width: 56ch; margin-bottom: 3rem; }
+.project-builds-intro {
+  font-size: 0.95rem; line-height: 1.8; color: var(--ash-dim);
+  margin-top: 0.75rem; max-width: 56ch;
+}
+.project-link {
+  font-family: inherit; font-size: inherit; font-weight: inherit;
+  letter-spacing: inherit; line-height: inherit;
+  color: var(--gold);
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, var(--gold) 55%, transparent);
+  text-underline-offset: 0.18em;
+  transition: color var(--ease), text-decoration-color var(--ease);
+}
+.project-link:hover {
+  color: var(--viral);
+  text-decoration-color: var(--viral);
+}
+.project-row:hover .project-link {
+  color: var(--viral);
+  text-decoration-color: var(--viral);
+}
 
 .launch-row { display: flex; flex-wrap: wrap; align-items: center; gap: 1.5rem; margin-top: 2.5rem; }
 .launch-btn { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink); background: var(--gold); padding: 0.75rem 1.4rem; border: 1px solid var(--gold); transition: opacity var(--ease); }
