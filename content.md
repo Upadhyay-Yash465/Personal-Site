@@ -157,13 +157,13 @@ Each one of them have changed the way how I look at the world, and if you decide
 # ===== MUSIC (music.html) ======================================
 
 ### music.kicker
-Lorem Ipsum
+My Favorite Tracks
 
 ### music.title
 Music
 
 ### music.carousel.desc
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.
+Music is a huge part of who I am, I almost always have an airpod in listening to something new. And if I don't, I'm probably thinking about a song in my head. These are some of my favorite songs, you can scroll through, and the play button will play the song. Enjoy!
 
 ### music.list []
 - title: The College Dropout
@@ -198,13 +198,13 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor i
 Ledger
 
 ### projects.title
-Projects
+Work Experience
 
 ### projects.intro
 Shipped systems serving 50,000+ users. Contracting across an early-stage startup and a production platform, plus coaching work I've led on my own.
 
 ### projects.builds-intro
-Things I've designed and shipped end to end — not contract work, not coaching.
+Things I've designed and shipped end to end.
 
 ### projects.ledger []
 - date: 2026 · May–Jun
@@ -228,7 +228,7 @@ Things I've designed and shipped end to end — not contract work, not coaching.
   title: AESOP
   href: speech-coach.html
   role: AI Public Speaking Coach · Knighthacks
-  desc: Full-stack AI app for real-time speech evaluation. Whisper speech-to-text, vocal analysis (pitch, pace, volume), and OpenCV facial-emotion detection fused into structured insight, with Gemini generating personalized coaching. The hard part was the output rubric, not the API call.
+  desc: Full-stack AI app for real-time speech evaluation. Whisper speech-to-text, vocal analysis (pitch, pace, volume), and OpenCV facial-emotion detection fused into structured insight, with Gemini generating personalized coaching. 
   tags: Whisper, OpenCV, Gemini, FastAPI
 
 
@@ -241,7 +241,7 @@ AI Public Speaking Coach
 AESOP
 
 ### speechcoach.intro
-Full-stack AI app for real-time speech evaluation. Whisper speech-to-text, vocal analysis (pitch, pace, volume), and structured coaching feedback fused by an LLM into a single rubric. The hard part was the output rubric, not the API call.
+Full-stack AI app for real-time speech evaluation. Whisper speech-to-text, vocal analysis (pitch, pace, volume), and structured coaching feedback fused by an LLM into a single rubric.
 
 ### speechcoach.detail
 Upload a recorded speech or video. AESOP transcribes it, scores pace and filler-word density, traces pitch and energy over time, and checks the argument's claim-warrant-data-analysis-impact chain for where the reasoning breaks. Then a coach model turns all of that into five concrete, demanding notes.
