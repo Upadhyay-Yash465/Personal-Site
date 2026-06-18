@@ -230,7 +230,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor i
 Ledger
 
 ### projects.title
-Projects
+Work Experience
 
 ### projects.intro
 Shipped systems serving 50,000+ users. Contracting across an early-stage startup and a production platform, plus what I've built and coached on my own.
