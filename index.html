@@ -10,28 +10,41 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400;1,9..144,500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=6">
 </head>
 <body class="home">
   <a href="#about" class="skip-link">Skip to content</a>
   <div class="grain" aria-hidden="true"></div>
   <div class="scroll-progress" aria-hidden="true"></div>
 
-  <header class="topbar" role="banner">
+  <!-- The cover IS the header: a full-height hero card that collapses into a
+       64px top bar on scroll. Name docks top-left, controls pop in, the
+       card's own bottom border becomes the header hairline. -->
+  <header class="cover" id="cover" role="banner">
+    <canvas class="cover-fx" id="cover-fx" aria-hidden="true"></canvas>
     <button class="menu-btn" id="menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="nav-overlay">
       <span></span><span></span><span></span>
     </button>
-    <a class="brand" href="index.html">Yash Upadhyay</a>
+    <a class="cover-name" id="cover-name" href="index.html"><span class="cn-first">Yash</span><span class="cn-rest">&nbsp;Upadhyay</span></a>
     <button class="theme-toggle" aria-label="Toggle color scheme" title="Toggle light / dark mode">
       <span class="theme-toggle-icon" aria-hidden="true"></span>
     </button>
+
+    <span class="hero-sigil" id="hero-sigil" aria-hidden="true">
+      <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="46"/><circle cx="50" cy="50" r="30"/><path d="M50 4 L50 96 M4 50 L96 50 M18 18 L82 82 M82 18 L18 82"/></svg>
+    </span>
+    <aside class="hero-aside" aria-label="Role and school">
+      <p class="hero-role"><span class="role-cycler" id="role-cycler">industrial&nbsp;engineer</span></p>
+      <span class="hero-aside-rule" aria-hidden="true"></span>
+      <p class="hero-school" data-content="home.hero.school">UCF &mdash; Class of 2029</p>
+    </aside>
+    <a href="#about" class="scroll-cue" aria-label="Scroll to about">&darr;</a>
   </header>
 
   <nav class="nav-overlay" id="nav-overlay" aria-hidden="true" aria-label="Primary">
     <ol class="nav-list">
       <li><a href="index.html"    aria-current="page">Home</a></li>
       <li><a href="think.html">How I Think</a></li>
-      <li><a href="dance.html">Dance</a></li>
       <li><a href="books.html">Books</a></li>
       <li><a href="music.html">Music</a></li>
       <li><a href="projects.html">Projects</a></li>
@@ -39,27 +52,12 @@
   </nav>
 
   <main id="main">
-    <section class="home-hero">
-      <span class="hero-sigil" aria-hidden="true">
-        <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="46"/><circle cx="50" cy="50" r="30"/><path d="M50 4 L50 96 M4 50 L96 50 M18 18 L82 82 M82 18 L18 82"/></svg>
-      </span>
-      <div class="hero-center">
-        <h1 class="hero-name">Yash Upadhyay</h1>
-      </div>
-      <aside class="hero-aside" aria-label="Role and school">
-        <p class="hero-role"><span class="role-cycler" id="role-cycler">industrial&nbsp;engineer</span></p>
-        <span class="hero-aside-rule" aria-hidden="true"></span>
-        <p class="hero-school">UCF &mdash; Class of 2029</p>
-      </aside>
-      <a href="#about" class="scroll-cue" aria-label="Scroll to about">&darr;</a>
-    </section>
-
     <section id="about" class="about" aria-labelledby="about-heading">
-      <h2 id="about-heading" class="section-label">About</h2>
+      <h2 id="about-heading" class="section-label" data-content="home.about.label">About</h2>
       <div class="about-body">
-        <p class="about-lead">I study industrial engineering at UCF because how systems fail is a more useful question than how software runs.</p>
-        <p>[about-body — placeholder: South Florida to Orlando; speech and debate as the foundation; training, dance, sourdough, and worldbuilding as one project rather than separate hobbies. Keep it honest and specific — this is the through-line for everything in the menu.]</p>
-        <ul class="about-facts">
+        <p class="about-lead" data-content="home.about.lead">I study industrial engineering at UCF because how systems fail is a more useful question than how software runs.</p>
+        <p data-content="home.about.body">[about-body — placeholder: South Florida to Orlando; speech and debate as the foundation; training, dance, sourdough, and worldbuilding as one project rather than separate hobbies. Keep it honest and specific — this is the through-line for everything in the menu.]</p>
+        <ul class="about-facts" data-content-list="home.about.facts">
           <li>UCF IE &middot; 2029</li>
           <li>KnightRaas Captain Intern</li>
           <li>Nationals 2026</li>
@@ -67,9 +65,8 @@
           <li>Catppuccin Mocha &middot; Hyprland</li>
         </ul>
         <p class="about-explore">
-          Go deeper —
+          <span data-content="home.about.explore">Go deeper —</span>
           <a href="think.html">How I Think</a>
-          <a href="dance.html">Dance</a>
           <a href="books.html">Books</a>
           <a href="music.html">Music</a>
           <a href="projects.html">Projects</a>
@@ -79,12 +76,12 @@
 
     <section class="contact" aria-labelledby="contact-heading">
       <div class="contact-head">
-        <h2 id="contact-heading" class="section-label">Close the Ritual</h2>
+        <h2 id="contact-heading" class="section-label" data-content="home.contact.label">Close the Ritual</h2>
         <span class="contact-sign" aria-hidden="true">
           <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="46"/><path d="M50 4 L50 96 M4 50 L96 50"/><circle cx="50" cy="50" r="20"/></svg>
         </span>
       </div>
-      <div class="contact-links">
+      <div class="contact-links" data-content-list="home.contact">
         <a href="mailto:yupadhyay2007@gmail.com" class="contact-link">Email</a>
         <a href="https://github.com/eyash24" class="contact-link" target="_blank" rel="noopener noreferrer">GitHub</a>
         <a href="https://www.linkedin.com/in/yashupadhyay12" class="contact-link" target="_blank" rel="noopener noreferrer">LinkedIn</a>
@@ -93,9 +90,10 @@
   </main>
 
   <footer class="site-footer" role="contentinfo">
-    <p>&copy; 2026 Yash Upadhyay &middot; ink, ritual, systems that fail</p>
+    <p data-content="site.footer">&copy; 2026 Yash Upadhyay &middot; ink, ritual, systems that fail</p>
   </footer>
 
-  <script src="main.js"></script>
+  <script src="content.js?v=1"></script>
+  <script src="main.js?v=7"></script>
 </body>
 </html>

@@ -31,7 +31,6 @@
     <ol class="nav-list">
       <li><a href="index.html">Home</a></li>
       <li><a href="think.html">How I Think</a></li>
-      <li><a href="dance.html">Dance</a></li>
       <li><a href="books.html">Books</a></li>
       <li><a href="music.html">Music</a></li>
       <li><a href="projects.html" aria-current="page">Projects</a></li>
@@ -40,16 +39,16 @@
 
   <main id="main">
     <div class="page-header">
-      <p class="page-kicker">Ledger</p>
-      <h1 class="page-title">Projects</h1>
+      <p class="page-kicker" data-content="projects.kicker">Ledger</p>
+      <h1 class="page-title" data-content="projects.title">Projects</h1>
     </div>
 
     <section class="ledger" aria-label="Work and projects">
       <div class="ledger-head">
-        <p class="ledger-intro">Shipped systems serving 50,000+ users. Contracting across an early-stage startup and a production platform, plus what I've built and coached on my own.</p>
+        <p class="ledger-intro" data-content="projects.intro">Shipped systems serving 50,000+ users. Contracting across an early-stage startup and a production platform, plus what I've built and coached on my own.</p>
       </div>
 
-      <ol class="ledger-rows">
+      <ol class="ledger-rows" data-content-list="projects.ledger">
         <li class="ledger-row">
           <span class="ledger-date">2026 · May–Jun</span>
           <div class="ledger-body">
@@ -87,9 +86,10 @@
   </main>
 
   <footer class="site-footer" role="contentinfo">
-    <p>&copy; 2026 Yash Upadhyay &middot; ink, ritual, systems that fail</p>
+    <p data-content="site.footer">&copy; 2026 Yash Upadhyay &middot; ink, ritual, systems that fail</p>
   </footer>
 
-  <script src="main.js"></script>
+  <script src="content.js?v=1"></script>
+  <script src="main.js?v=7"></script>
 </body>
 </html>

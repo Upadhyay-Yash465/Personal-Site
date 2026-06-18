@@ -31,7 +31,6 @@
     <ol class="nav-list">
       <li><a href="index.html">Home</a></li>
       <li><a href="think.html" aria-current="page">How I Think</a></li>
-      <li><a href="dance.html">Dance</a></li>
       <li><a href="books.html">Books</a></li>
       <li><a href="music.html">Music</a></li>
       <li><a href="projects.html">Projects</a></li>
@@ -40,15 +39,15 @@
 
   <main id="main">
     <div class="page-header">
-      <p class="page-kicker">How I Work</p>
-      <h1 class="page-title">How I Think</h1>
+      <p class="page-kicker" data-content="think.kicker">How I Work</p>
+      <h1 class="page-title" data-content="think.title">How I Think</h1>
     </div>
 
     <section class="manifesto" aria-label="Manifesto">
       <div class="manifesto-head">
-        <p class="manifesto-intro">I don't separate the personal, the creative, and the professional. It's one project. This is the grain it runs along.</p>
+        <p class="manifesto-intro" data-content="think.manifesto.intro">I don't separate the personal, the creative, and the professional. It's one project. This is the grain it runs along.</p>
       </div>
-      <ol class="tenets">
+      <ol class="tenets" data-content-list="think.manifesto.tenets">
         <li class="tenet"><span class="tenet-num">01</span><div class="tenet-body"><p class="tenet-stmt">Research first, build a structure, then execute.</p><p class="tenet-note">[manifesto-note-1 — placeholder]</p></div></li>
         <li class="tenet"><span class="tenet-num">02</span><div class="tenet-body"><p class="tenet-stmt">No patience for filler or padding. Give me the real signal.</p><p class="tenet-note">[manifesto-note-2 — placeholder]</p></div></li>
         <li class="tenet"><span class="tenet-num">03</span><div class="tenet-body"><p class="tenet-stmt">Personal, creative, professional — it's all one project.</p><p class="tenet-note">[manifesto-note-3 — placeholder]</p></div></li>
@@ -59,9 +58,10 @@
   </main>
 
   <footer class="site-footer" role="contentinfo">
-    <p>&copy; 2026 Yash Upadhyay &middot; ink, ritual, systems that fail</p>
+    <p data-content="site.footer">&copy; 2026 Yash Upadhyay &middot; ink, ritual, systems that fail</p>
   </footer>
 
-  <script src="main.js"></script>
+  <script src="content.js?v=1"></script>
+  <script src="main.js?v=7"></script>
 </body>
 </html>

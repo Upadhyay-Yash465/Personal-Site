@@ -31,7 +31,6 @@
     <ol class="nav-list">
       <li><a href="index.html">Home</a></li>
       <li><a href="think.html">How I Think</a></li>
-      <li><a href="dance.html">Dance</a></li>
       <li><a href="books.html" aria-current="page">Books</a></li>
       <li><a href="music.html">Music</a></li>
       <li><a href="projects.html">Projects</a></li>
@@ -40,17 +39,17 @@
 
   <main id="main">
     <div class="page-header">
-      <p class="page-kicker">Reading &amp; Rereading</p>
-      <h1 class="page-title">Books</h1>
+      <p class="page-kicker" data-content="books.kicker">Reading &amp; Rereading</p>
+      <h1 class="page-title" data-content="books.title">Books</h1>
     </div>
 
     <section id="books" class="carousel-section" aria-label="Books carousel">
       <div class="carousel-section-head">
-        <p class="carousel-desc">The taste behind the worlds — drag through. Power systems with internal logic, sacrifice, identity cost, the body as site of transformation.</p>
+        <p class="carousel-desc" data-content="books.carousel.desc">The taste behind the worlds — drag through. Power systems with internal logic, sacrifice, identity cost, the body as site of transformation.</p>
       </div>
       <div class="carousel-outer">
         <div class="carousel-perspective">
-          <ul class="carousel-cards books-carousel" id="books-carousel">
+          <ul class="carousel-cards books-carousel" id="books-carousel" data-content-list="books.list">
             <li class="carousel-card" data-idx="0">
               <div class="cover-wrap"><img class="cover-art" src="https://covers.openlibrary.org/b/isbn/9780765382030-L.jpg" alt="The Three-Body Problem" loading="lazy"></div>
               <div class="cover-meta"><p class="cover-title">The Three-Body Problem</p><p class="cover-sub">Liu Cixin</p></div>
@@ -78,11 +77,11 @@
 
     <section id="worlds" class="worlds" aria-labelledby="worlds-heading">
       <div class="worlds-head">
-        <h2 id="worlds-heading" class="section-label">What I'm Building in My Head</h2>
-        <p class="worlds-intro">Two original universes in active development. Not a portfolio piece — an open window into how I think. Both share a <em>ritual + body + concept</em> trinity: identity under pressure, the cost of becoming something, hollowness.</p>
+        <h2 id="worlds-heading" class="section-label" data-content="books.worlds.label">What I'm Building in My Head</h2>
+        <p class="worlds-intro" data-content="books.worlds.intro">Two original universes in active development. Not a portfolio piece — an open window into how I think. Both share a <em>ritual + body + concept</em> trinity: identity under pressure, the cost of becoming something, hollowness.</p>
       </div>
 
-      <div class="specimens">
+      <div class="specimens" data-content-list="books.worlds.items">
         <article class="specimen specimen--viral">
           <header class="specimen-head">
             <p class="specimen-name">Lucky Boy</p>
@@ -109,8 +108,8 @@
       </div>
 
       <div class="taste">
-        <p class="taste-label">A field guide to my taste</p>
-        <div class="taste-grid">
+        <p class="taste-label" data-content="books.taste.label">A field guide to my taste</p>
+        <div class="taste-grid" data-content-list="books.taste.items">
           <div class="taste-card">
             <p class="taste-card-head">Fiction</p>
             <p class="taste-card-body">Power systems with internal logic. Sacrifice, identity cost, the body as site of transformation.</p>
@@ -126,10 +125,11 @@
   </main>
 
   <footer class="site-footer" role="contentinfo">
-    <p>&copy; 2026 Yash Upadhyay &middot; ink, ritual, systems that fail</p>
+    <p data-content="site.footer">&copy; 2026 Yash Upadhyay &middot; ink, ritual, systems that fail</p>
   </footer>
 
-  <script src="main.js"></script>
-  <script src="carousel.js"></script>
+  <script src="content.js?v=1"></script>
+  <script src="main.js?v=7"></script>
+  <script src="carousel.js?v=3"></script>
 </body>
 </html>

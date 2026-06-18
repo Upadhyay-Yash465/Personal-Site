@@ -31,7 +31,6 @@
     <ol class="nav-list">
       <li><a href="index.html">Home</a></li>
       <li><a href="think.html">How I Think</a></li>
-      <li><a href="dance.html">Dance</a></li>
       <li><a href="books.html">Books</a></li>
       <li><a href="music.html" aria-current="page">Music</a></li>
       <li><a href="projects.html">Projects</a></li>
@@ -40,13 +39,13 @@
 
   <main id="main">
     <div class="page-header">
-      <p class="page-kicker">On Repeat</p>
-      <h1 class="page-title">Music</h1>
+      <p class="page-kicker" data-content="music.kicker">On Repeat</p>
+      <h1 class="page-title" data-content="music.title">Music</h1>
     </div>
 
     <section id="music" class="carousel-section" aria-label="Music carousel">
       <div class="carousel-section-head">
-        <p class="carousel-desc">Drag through — the center track is the one cued. Hit play for a 30-second preview.</p>
+        <p class="carousel-desc" data-content="music.carousel.desc">Drag through — the center track is the one cued. Hit play for a 30-second preview.</p>
       </div>
 
       <div class="carousel-outer" id="music-outer">
@@ -69,10 +68,11 @@
   </main>
 
   <footer class="site-footer" role="contentinfo">
-    <p>&copy; 2026 Yash Upadhyay &middot; ink, ritual, systems that fail</p>
+    <p data-content="site.footer">&copy; 2026 Yash Upadhyay &middot; ink, ritual, systems that fail</p>
   </footer>
 
-  <script src="main.js"></script>
-  <script src="carousel.js"></script>
+  <script src="content.js?v=1"></script>
+  <script src="main.js?v=7"></script>
+  <script src="carousel.js?v=3"></script>
 </body>
 </html>

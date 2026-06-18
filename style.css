@@ -134,13 +134,7 @@ body {
   -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--border);
 }
-/* Home: the bar isn't there at full hero — it forms as you scroll, the veil
-   sliding down into place (cover-collapses-into-header, à la scroll-driven
-   cover-to-fixed-header) rather than flatly fading in. */
-body.home .topbar::before {
-  opacity: var(--collapse, 1);
-  transform: translateY(calc((var(--collapse, 1) - 1) * 12px));
-}
+/* Home uses the .cover header instead of .topbar (see HOME section). */
 
 .menu-btn {
   display: flex; flex-direction: column; justify-content: center;
@@ -165,10 +159,6 @@ body.menu-open .menu-btn span:nth-child(3) { transform: translateY(-6.5px) rotat
   transition: color var(--ease);
 }
 .brand:hover { color: var(--gold); }
-/* Home: the hero name itself becomes the docked brand. Keep the static one
-   in layout (invisible) so its margin-right:auto still pushes the theme
-   toggle to the right edge; the morphing name lands over its slot. */
-body.home.js-collapse .brand { visibility: hidden; }
 
 /* ── Nav overlay ──────────────────────────── */
 .nav-overlay {
@@ -239,54 +229,76 @@ body.menu-open .nav-list a { transform: translateY(0); }
    HOME — hero + about
    ════════════════════════════════════════════════════════════ */
 
-/* Home hero owns the top of the page — no header chrome above it. */
+/* Home hero owns the top of the page — no separate header above it. */
 body.home { padding-top: 0; }
 
-.home-hero {
-  position: relative; overflow: hidden;
-  min-height: 100vh;
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
+/* ── The cover ──────────────────────────────────────────────
+   The cover IS the header. Default (no-JS / reduced-motion): a static
+   full-height hero with the controls already parked in the top-bar band.
+   Progressive enhancement (body.js-cover) turns it into a fixed header that
+   collapses 100vh → --topbar-h on scroll — its own bottom border travelling
+   up to become the header hairline (à la scroll-driven cover-to-fixed-header). */
+.cover {
+  position: relative;
+  height: 100vh; overflow: hidden;
+  background: var(--ink-1);
+  border-bottom: 1px solid var(--border);   /* the travelling hairline */
   padding: 0 var(--gutter);
 }
 
-.hero-center {
-  position: relative; z-index: 1;
-  width: min(92vw, 44rem);
-  text-align: left;
+/* Controls live in the top --topbar-h band so they land correctly once the
+   cover has collapsed to that height. */
+.cover .menu-btn {
+  position: absolute; left: var(--gutter);
+  top: calc((var(--topbar-h) - 34px) / 2); z-index: 102;
 }
-.hero-sigil {
-  position: absolute; left: 50%; top: 46%;
-  width: 70vmin; height: 70vmin;
-  transform: translate(-50%, -50%);
-  pointer-events: none; z-index: 0;
-  animation: sigil-breathe 22s ease-in-out infinite;
-}
-.hero-sigil svg { width: 100%; height: 100%; fill: none; stroke: var(--gold); stroke-width: 0.4; opacity: 0.4; }
-@keyframes sigil-breathe {
-  0%, 100% { transform: translate(-50%, -50%) rotate(0deg); opacity: 0.9; }
-  50%      { transform: translate(-50%, -50%) rotate(18deg); opacity: 0.55; }
+.cover .theme-toggle {
+  position: absolute; right: var(--gutter);
+  top: calc((var(--topbar-h) - 1.7rem) / 2); z-index: 102;
 }
 
-.hero-name {
-  position: relative; z-index: 1;
+/* The name: huge + centred at rest, morphs into a small top-left wordmark.
+   CSS sets the rest geometry + look; JS pins it (fixed) and drives transform.
+   The entrance animates opacity/blur only, so it never fights the JS transform. */
+.cover-name {
+  position: absolute; left: 50%; top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 101; pointer-events: none; white-space: nowrap;
   font-family: var(--font-display);
   font-size: clamp(3.5rem, 13vw, 11rem); font-weight: 300;
   line-height: 0.86; letter-spacing: -0.035em; color: var(--ash);
-  text-shadow: 0 0 60px rgba(212,165,116,0.12);
+  text-decoration: none; text-shadow: 0 0 60px rgba(212,165,116,0.12);
   animation: hero-rise 900ms var(--ease-s) both;
 }
-/* JS owns transform here (the scroll-driven dock), so the entrance must not
-   use transform — opacity + blur only. */
 @keyframes hero-rise { from { opacity: 0; filter: blur(8px); } to { opacity: 1; filter: none; } }
+body.home.js-cover .cover-name {
+  position: fixed; pointer-events: auto;
+  transform-origin: top left; will-change: transform, font-size;
+}
+/* The surname drops away as the cover collapses, so only "Yash" docks. */
+.cn-rest { opacity: var(--fade, 1); }
 
-/* Scroll-driven dock: JS pins the hero name and morphs it (transform only)
-   from the hero centre into the header brand slot. The element is fixed, so
-   it floats up out of the hero rather than scrolling away. */
-body.home.js-collapse .hero-name {
-  position: fixed; margin: 0; z-index: 101;
-  text-align: left; pointer-events: none;
-  transform-origin: top left; will-change: transform;
+/* Mouse-weight particle field — a grid of faint dots that flee the cursor and
+   spring back (the ripple/heft). JS-driven canvas; sits behind the wheel. */
+.cover-fx {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  pointer-events: none; z-index: 0;
+}
+
+.hero-sigil {
+  position: absolute; left: 50%; top: 50%;
+  width: 70vmin; height: 70vmin;
+  transform: translate(-50%, -50%);
+  pointer-events: none; z-index: 1; will-change: transform;
+}
+.hero-sigil svg { width: 100%; height: 100%; fill: none; stroke: var(--gold); stroke-width: 0.4; opacity: 0.4; }
+/* No-JS idle drift so the wheel isn't dead without scripting (JS replaces it
+   with a scroll-velocity spin). */
+body.home:not(.js-cover) .hero-sigil { animation: sigil-breathe 22s ease-in-out infinite; }
+@keyframes sigil-breathe {
+  0%, 100% { transform: translate(-50%, -50%) rotate(0deg); opacity: 0.9; }
+  50%      { transform: translate(-50%, -50%) rotate(18deg); opacity: 0.55; }
 }
 
 .hero-aside {
@@ -323,10 +335,29 @@ body.home.js-collapse .hero-name {
 .scroll-cue:hover { color: var(--gold); }
 @keyframes cue-bob { 0%,100% { transform: translate(-50%, 0); } 50% { transform: translate(-50%, 8px); } }
 
-/* Hero furniture fades as the name docks (--fade set by JS, 1 → 0). */
-body.home.js-collapse .hero-sigil,
-body.home.js-collapse .hero-aside,
-body.home.js-collapse .scroll-cue {
+/* ── js-cover: scroll-collapsing fixed header ──────────────────
+   The cover goes fixed and its height is driven 100vh → --topbar-h by JS.
+   The body gets a 100vh runway so the page content scrolls up to meet the
+   collapsed bar. Chrome (hamburger + toggle) pops in only near the end via
+   --chrome (0→1); hero furniture fades out via --fade (1→0). */
+body.home.js-cover { padding-top: 100vh; }
+body.home.js-cover .cover {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  height: 100vh;            /* JS overrides inline each frame */
+  will-change: height;
+}
+body.home.js-cover .menu-btn,
+body.home.js-cover .theme-toggle {
+  opacity: var(--chrome, 0);
+}
+body.home.js-cover:not(.chrome-on) .menu-btn,
+body.home.js-cover:not(.chrome-on) .theme-toggle {
+  pointer-events: none;
+}
+body.home.js-cover .cover-fx,
+body.home.js-cover .hero-sigil,
+body.home.js-cover .hero-aside,
+body.home.js-cover .scroll-cue {
   opacity: var(--fade, 1);
 }
 
@@ -653,12 +684,7 @@ body.home.js-collapse .scroll-cue {
 
 @media (max-width: 680px) {
   :root { --gutter: 1.25rem; }
-  .hero-center { width: min(94vw, 44rem); }
-  .hero-aside {
-    position: static; align-self: flex-end;
-    margin-top: 2.5rem; margin-right: 0;
-    bottom: auto; right: auto;
-  }
+  .hero-aside { bottom: 3rem; }
   .about { grid-template-columns: 1fr; gap: 1.25rem; }
   .about .section-label { margin-bottom: 0.5rem; }
   .specimens { grid-template-columns: 1fr; }

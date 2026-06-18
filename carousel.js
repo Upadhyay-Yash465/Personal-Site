@@ -2,10 +2,11 @@
   'use strict';
 
   // ─────────────────────────────────────────────────────────────
-  // YOUR ALBUMS — fill these in
-  // cover/preview filled at runtime via Spotify oEmbed + iTunes.
+  // ALBUMS — the source of truth is content.md (music.list); this is
+  // only the fallback if content.md fails to load. cover/preview are
+  // filled at runtime via Spotify oEmbed + iTunes.
   // ─────────────────────────────────────────────────────────────
-  const ALBUMS = [
+  let ALBUMS = [
     { title: 'The College Dropout', artist: 'Kanye West',     trackName: 'All Falls Down',        cover: '', preview: '', spotifyUrl: 'https://open.spotify.com/track/5SkRLpaGtvYPhw02vZhQQ9' },
     { title: 'Hasee Toh Phasee',    artist: 'Vishal-Shekhar', trackName: 'Ishq Bulava',           cover: '', preview: '', spotifyUrl: 'https://open.spotify.com/track/1fkjRQA8wXPPyxqYLbxuqy' },
     { title: 'DAMN.',               artist: 'Kendrick Lamar', trackName: 'LOVE. FEAT. ZACARI.',   cover: '', preview: '', spotifyUrl: 'https://open.spotify.com/track/6PGoSes0D9eUDeeAafB2As' },
@@ -254,6 +255,15 @@
 
   // ── Boot ──────────────────────────────────────────────────────
   async function boot() {
+    // Adopt the music list from content.md when it's available.
+    const m = window.SITE_CONTENT && window.SITE_CONTENT['music.list'];
+    if (Array.isArray(m) && m.length) {
+      ALBUMS = m.map(a => ({
+        title: a.title || '', artist: a.artist || '', trackName: a.trackName || '',
+        cover: '', preview: '', spotifyUrl: a.spotifyUrl || '',
+      }));
+    }
+
     if (musicList) {
       renderMusicCards();
       updateMeta(0);
@@ -274,5 +284,13 @@
     }
   }
 
-  boot();
+  // Wait for content.md (books cards + music list come from it). Fall back
+  // to booting with defaults if it never arrives.
+  let booted = false;
+  const start = () => { if (booted) return; booted = true; boot(); };
+  if (window.SITE_CONTENT) start();
+  else {
+    document.addEventListener('content:ready', start, { once: true });
+    setTimeout(start, 2500);
+  }
 }());
