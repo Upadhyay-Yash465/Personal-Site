@@ -68,8 +68,9 @@ node_modules/
 # dataconnect generated files
 .dataconnect
 
-# Separate sub-app (own project) and large media — not part of the personal site
-Projects/
+# Large media and unrelated notes — not part of the personal site
+Projects/*
+!Projects/speech-coach
 
 # Session/tooling artifacts
 .playwright-mcp/

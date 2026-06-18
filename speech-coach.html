@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script>(function(){try{var t=localStorage.getItem('theme')||(matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
   <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%20fill='none'%20stroke='%23d4a574'%20stroke-width='5'%3E%3Ccircle%20cx='50'%20cy='50'%20r='44'/%3E%3Ccircle%20cx='50'%20cy='50'%20r='28'/%3E%3Cpath%20d='M50%206V94M6%2050H94'/%3E%3C/svg%3E">
-  <meta name="description" content="Favorite tracks — the center track plays. Yash Upadhyay's music.">
-  <title>Music — Yash Upadhyay</title>
+  <meta name="description" content="AESOP — an AI public speaking coach built by Yash Upadhyay.">
+  <title>AESOP — Yash Upadhyay</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400;1,9..144,500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
@@ -32,39 +32,38 @@
       <li><a href="index.html">Home</a></li>
       <li><a href="think.html">How I Think</a></li>
       <li><a href="books.html">Books</a></li>
-      <li><a href="music.html" aria-current="page">Music</a></li>
+      <li><a href="music.html">Music</a></li>
       <li><a href="projects.html">Projects</a></li>
-      <li><a href="speech-coach.html">AESOP</a></li>
+      <li><a href="speech-coach.html" aria-current="page">AESOP</a></li>
     </ol>
   </nav>
 
   <main id="main">
     <div class="page-header">
-      <p class="page-kicker" data-content="music.kicker">On Repeat</p>
-      <h1 class="page-title" data-content="music.title">Music</h1>
+      <p class="page-kicker" data-content="speechcoach.kicker">AI Public Speaking Coach</p>
+      <h1 class="page-title" data-content="speechcoach.title">AESOP</h1>
     </div>
 
-    <section id="music" class="carousel-section" aria-label="Music carousel">
-      <div class="carousel-section-head">
-        <p class="carousel-desc" data-content="music.carousel.desc">Drag through — the center track is the one cued. Hit play for a 30-second preview.</p>
+    <section class="ledger" aria-label="AESOP overview">
+      <div class="ledger-head">
+        <p class="ledger-intro" data-content="speechcoach.intro">Full-stack AI app for real-time speech evaluation. Whisper speech-to-text, vocal analysis (pitch, pace, volume), and structured coaching feedback fused by an LLM into a single rubric. The hard part was the output rubric, not the API call.</p>
       </div>
 
-      <div class="carousel-outer" id="music-outer">
-        <div class="carousel-perspective">
-          <ul class="carousel-cards music-carousel" id="music-carousel">
-            <!-- rendered by carousel.js -->
-          </ul>
-        </div>
-      </div>
+      <p class="ledger-desc" data-content="speechcoach.detail">Upload a recorded speech or video. AESOP transcribes it, scores pace and filler-word density, traces pitch and energy over time, and checks the argument's claim&ndash;warrant&ndash;data&ndash;analysis&ndash;impact chain for where the reasoning breaks &mdash; then a coach model turns all of that into five concrete, demanding notes.</p>
 
-      <div class="music-meta" id="music-meta">
-        <button class="global-play-btn" id="global-play-btn" aria-label="Play"></button>
-        <p class="music-meta-album"  id="meta-album">—</p>
-        <p class="music-meta-song"   id="meta-song">—</p>
-        <p class="music-meta-artist" id="meta-artist">—</p>
-      </div>
+      <ul class="specimen-tags">
+        <li>Groq Whisper</li>
+        <li>NVIDIA NIM &middot; Llama 3.3</li>
+        <li>Pitch &amp; energy analysis</li>
+        <li>MongoDB</li>
+        <li>Express &middot; React</li>
+      </ul>
 
-      <audio id="preview-audio" preload="none"></audio>
+      <div class="launch-row">
+        <!-- TODO: replace with the deployed Cloud Run URL once live -->
+        <a class="launch-btn" href="#" target="_blank" rel="noopener">Launch AESOP &rarr;</a>
+        <a class="launch-link" href="https://github.com/Upadhyay-Yash465/Personal-Site/tree/main/Projects/speech-coach" target="_blank" rel="noopener">View source &middot; GitHub</a>
+      </div>
     </section>
   </main>
 
@@ -73,7 +72,6 @@
   </footer>
 
   <script src="content.js?v=1"></script>
-  <script src="main.js?v=8"></script>
-  <script src="carousel.js?v=3"></script>
+  <script src="main.js?v=7"></script>
 </body>
 </html>

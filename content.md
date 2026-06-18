@@ -1,6 +1,10 @@
 # ──────────────────────────────────────────────────────────────
 # SITE CONTENT — single source of truth for all written copy.
 #
+# NOTE: copy is currently PLACEHOLDER (lorem ipsum) while the site is
+# a work in progress. Replace each field with real copy when ready.
+# Kept real: page titles, the brand name, and contact links.
+#
 # Edit the text under each `###` heading and reload the site; the
 # change shows everywhere that field is used. content.js fetches and
 # parses this file at load.
@@ -18,42 +22,41 @@
 # ===== SHARED ==================================================
 
 ### site.footer
-© 2026 Yash Upadhyay
+© 2026 Yash Upadhyay · lorem ipsum dolor sit amet
 
 
 # ===== HOME (index.html) =======================================
 
 ### home.hero.school
-UCF — Class of 2029
+Lorem ipsum · dolor 2029
 
 ### home.roles []
-- text: industrial engineer
-- text: dancer
-- text: worldbuilder
-- text: debate coach
+- text: lorem ipsum
+- text: dolor sit
+- text: amet consectetur
+- text: adipiscing elit
 
 ### home.about.label
-About
+Lorem
 
 ### home.about.lead
-I study industrial engineering at UCF because I love the process of optimizing systems
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
 
 ### home.about.body
-
-[about-body — placeholder: South Florida to Orlando; speech and debate as the foundation; training, dance, sourdough, and worldbuilding as one project rather than separate hobbies. Keep it honest and specific — this is the through-line for everything in the menu.]
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
 
 ### home.about.facts []
-- text: UCF IE · 2029
-- text: KnightRaas Captain Intern
-- text: Nationals 2026
-- text: Sourdough
-- text: Catppuccin Mocha · Hyprland
+- text: Lorem · Ipsum
+- text: Dolor Sit Amet
+- text: Consectetur 2026
+- text: Adipiscing
+- text: Elit · Tempor
 
 ### home.about.explore
-Go deeper —
+Lorem ipsum —
 
 ### home.contact.label
-Close the Ritual
+Lorem Ipsum Dolor
 
 ### home.contact []
 - label: Email
@@ -67,34 +70,34 @@ Close the Ritual
 # ===== HOW I THINK (think.html) ================================
 
 ### think.kicker
-How I Work
+Lorem Ipsum
 
 ### think.title
 How I Think
 
 ### think.manifesto.intro
-I don't separate the personal, the creative, and the professional. It's one project. This is the grain it runs along.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
 
 ### think.manifesto.tenets []
-- stmt: Research first, build a structure, then execute.
-  note: [manifesto-note-1 — placeholder]
-- stmt: No patience for filler or padding. Give me the real signal.
-  note: [manifesto-note-2 — placeholder]
-- stmt: Personal, creative, professional — it's all one project.
-  note: [manifesto-note-3 — placeholder]
-- stmt: I'd rather be asked a good question than handed a conclusion.
-  note: [manifesto-note-4 — placeholder]
-- stmt: Writing something down weakens my ownership of it.
-  note: [manifesto-note-5 — placeholder]
+- stmt: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+  note: Sed do eiusmod tempor incididunt ut labore et dolore.
+- stmt: Ut enim ad minim veniam, quis nostrud exercitation ullamco.
+  note: Laboris nisi ut aliquip ex ea commodo consequat.
+- stmt: Duis aute irure dolor in reprehenderit in voluptate velit.
+  note: Esse cillum dolore eu fugiat nulla pariatur.
+- stmt: Excepteur sint occaecat cupidatat non proident.
+  note: Sunt in culpa qui officia deserunt mollit anim.
+- stmt: Nemo enim ipsam voluptatem quia voluptas sit aspernatur.
+  note: Neque porro quisquam est qui dolorem ipsum quia dolor.
 
 
 # ===== DANCE (dance.html) ======================================
 
 ### dance.label
-The Body as Instrument
+Lorem Ipsum Dolor
 
 ### dance.kicker
-UCF KnightRaas · Competitive Garba-Raas · Captain Intern
+Lorem ipsum · Dolor sit amet · Consectetur
 
 ### dance.title
 NATIONALS
@@ -103,96 +106,96 @@ NATIONALS
 2026
 
 ### dance.dance.label
-The Dance
+Lorem Ipsum
 
 ### dance.dance.lead
-Garba and Raas are folk forms from Gujarat — circle dances rooted in devotion, sharpened into a competitive circuit judged on synchronization, footwork, formation, and cultural authenticity.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
 
 ### dance.dance.body
-[knightraas-body — placeholder: what the competitive circuit demands, the cultural weight of it, and what Captain Intern actually means in terms of responsibility and leadership within the team.]
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
 
 ### dance.training.label
-The Training
+Dolor Sit
 
 ### dance.training.lead
-Structured split, dialed-in nutrition — not aesthetic-chasing. I'm building a body that can do what the dance demands.
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
 
 ### dance.training.body
-[fitness-body — placeholder: how training maps to performance support, the split, the framing of the body as instrument rather than image.]
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
 
 # ===== BOOKS (books.html) ======================================
 
 ### books.kicker
-Reading & Rereading
+Lorem Ipsum
 
 ### books.title
 Books
 
 ### books.carousel.desc
-The taste behind the worlds — drag through. Power systems with internal logic, sacrifice, identity cost, the body as site of transformation.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
 
 ### books.list []
-- title: The Three-Body Problem
-  sub: Liu Cixin
+- title: Lorem Ipsum
+  sub: Dolor Sit
   isbn: 9780765382030
-- title: Project Hail Mary
-  sub: Andy Weir
+- title: Consectetur Elit
+  sub: Adipiscing
   isbn: 9780593135204
-- title: Reverend Insanity
-  sub: Gu Zhen Ren
-- title: The Climber
-  sub: Eugen Ciceu
+- title: Tempor Incididunt
+  sub: Ut Labore
+- title: Dolore Magna
+  sub: Aliqua
 - title: —
-  sub: Add more
+  sub: Lorem
 
 ### books.worlds.label
-What I'm Building in My Head
+Lorem Ipsum Dolor Sit
 
 ### books.worlds.intro
-Two original universes in active development. Not a portfolio piece — an open window into how I think. Both share a *ritual + body + concept* trinity: identity under pressure, the cost of becoming something, hollowness.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut *labore et dolore* magna aliqua: ut enim ad minim veniam, quis nostrud exercitation.
 
 ### books.worlds.items []
 - variant: viral
-  name: Lucky Boy
-  kind: Universe · Ink-based
-  logic: Virus-bugs consume insight. The enriched ink is tattooed onto fighters. Each person wields their personal interpretation of a concept.
-  note: [lucky-boy-note — placeholder: ink-rooted, identity-internal, the system's deeper logic.]
-  tags: ink, identity, internal, concept-wielding
+  name: Lorem Ipsum
+  kind: Dolor · Sit-amet
+  logic: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.
+  note: Ut enim ad minim veniam, quis nostrud exercitation ullamco.
+  tags: lorem, ipsum, dolor, sit
 - variant: blood
-  name: Tower
-  kind: Universe · Sacrifice-based
-  logic: Sacrifice mythical beast body parts in rituals to strengthen the body or the environment.
-  note: [tower-note — placeholder: the cost economy, what's given up, the ritual frame.]
-  tags: ritual, body, sacrifice, cost
+  name: Dolor Sit
+  kind: Amet · Consectetur
+  logic: Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat.
+  note: Excepteur sint occaecat cupidatat non proident sunt in culpa.
+  tags: consectetur, adipiscing, elit, tempor
 
 ### books.taste.label
-A field guide to my taste
+Lorem ipsum dolor sit amet
 
 ### books.taste.items []
-- head: Fiction
-  body: Power systems with internal logic. Sacrifice, identity cost, the body as site of transformation.
-  refs: The Climber · Reverend Insanity · Three-Body Problem · Project Hail Mary
-- head: Visual
-  body: Biopunk, ritual, ink. Deliberate and dark.
-- head: Culture
-  body: Garba-Raas. South Asian diaspora expression.
-- head: Tech
-  body: Catppuccin Mocha. Hyprland. Opinionated minimalism.
-- head: Food
-  body: I bake my own sourdough. That's craft — the slowest thing I do.
+- head: Lorem
+  body: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.
+  refs: Lorem · Ipsum · Dolor · Sit Amet
+- head: Ipsum
+  body: Consectetur adipiscing elit, sed do eiusmod tempor incididunt.
+- head: Dolor
+  body: Ut labore et dolore magna aliqua, ut enim ad minim veniam.
+- head: Sit
+  body: Quis nostrud exercitation ullamco laboris nisi ut aliquip.
+- head: Amet
+  body: Duis aute irure dolor in reprehenderit in voluptate velit.
 
 
 # ===== MUSIC (music.html) ======================================
 
 ### music.kicker
-On Repeat
+Lorem Ipsum
 
 ### music.title
 Music
 
 ### music.carousel.desc
-Drag through — the center track is the one cued. Hit play for a 30-second preview.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.
 
 ### music.list []
 - title: The College Dropout
@@ -224,32 +227,47 @@ Drag through — the center track is the one cued. Hit play for a 30-second prev
 # ===== PROJECTS (projects.html) ================================
 
 ### projects.kicker
-Ledger
+Lorem Ipsum
 
 ### projects.title
 Projects
 
 ### projects.intro
-Shipped systems serving 50,000+ users. Contracting across an early-stage startup and a production platform, plus what I've built and coached on my own.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
 
 ### projects.ledger []
-- date: 2026 · May–Jun
-  title: IRLXR
-  role: Full-Stack Software Engineering Contractor
-  desc: Built admin dashboard modules — a full transaction ledger with UI, data-export tools, user management — and architected enforced super-admin RBAC across all sensitive routes. Engineered a high-performance property search over 5,000+ listings with indexing, caching, map-pin clustering, and pagination.
-  tags: React, Node.js, RBAC, Search at scale
-- date: 2026 · Mar–Apr
-  title: Employers 4 Change
-  role: AI/ML Engineer & Full-Stack Developer
-  desc: Engineered a multi-role auth microservice (Student / Employer / School) with Firebase Auth, OTP-based MFA, and RBAC across ~20 routes. Designed a two-phase ML matching pipeline in Python/FastAPI — 11 hard filters and a 5-component cosine-similarity scoring model. Established testing standards adopted across the codebase.
-  tags: FastAPI, Firebase, ML matching, Testing
-- date: 2025 · Oct
-  title: AESOP
-  role: AI Public Speaking Coach · Knighthacks
-  desc: Full-stack AI app for real-time speech evaluation. Whisper speech-to-text, vocal analysis (pitch, pace, volume), and OpenCV facial-emotion detection fused into structured insight, with Gemini generating personalized coaching. The hard part was the output rubric, not the API call.
-  tags: Whisper, OpenCV, Gemini, FastAPI
+- date: 2026 · Lorem
+  title: Lorem Ipsum
+  role: Dolor sit amet consectetur
+  desc: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+  tags: Lorem, Ipsum, Dolor, Sit
+- date: 2026 · Ipsum
+  title: Dolor Sit Amet
+  role: Consectetur adipiscing elit
+  desc: Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit.
+  tags: Consectetur, Adipiscing, Elit, Tempor
+- date: 2025 · Dolor
+  title: Tempor Incididunt
+  role: Ut labore et dolore · Magna
+  desc: Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.
+  tags: Labore, Dolore, Magna, Aliqua
 - date: 2024 · 2026
-  title: Palm Coast Speech & Debate
-  role: Founder, Head of Coaching
-  desc: Coordinate 18+ students across 7 districts; 125+ custom sessions and 60+ in-person workshops. Students placed Top 6 at 2025 Florida State finals, Champion at the 2024 UCF tournament, and a 2025 Florida Novice State Champion. Speech and debate is where I learned to argue, structure, and not waste words.
-  tags: Coaching, Argument structure, Founder
+  title: Voluptate Velit
+  role: Esse cillum, Dolore eu fugiat
+  desc: Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nemo enim ipsam voluptatem quia voluptas.
+  tags: Cupidatat, Proident, Officia
+
+
+# ===== AESOP / SPEECH-COACH (speech-coach.html) =================
+
+### speechcoach.kicker
+AI Public Speaking Coach
+
+### speechcoach.title
+AESOP
+
+### speechcoach.intro
+Full-stack AI app for real-time speech evaluation. Whisper speech-to-text, vocal analysis (pitch, pace, volume), and structured coaching feedback fused by an LLM into a single rubric. The hard part was the output rubric, not the API call.
+
+### speechcoach.detail
+Upload a recorded speech or video. AESOP transcribes it, scores pace and filler-word density, traces pitch and energy over time, and checks the argument's claim-warrant-data-analysis-impact chain for where the reasoning breaks. Then a coach model turns all of that into five concrete, demanding notes.
