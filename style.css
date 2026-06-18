@@ -637,6 +637,7 @@ body.home.js-cover .scroll-cue {
 .launch-btn:hover { opacity: 0.85; }
 .launch-link { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.04em; color: var(--ash-dim); border-bottom: 1px solid var(--border); transition: color var(--ease), border-color var(--ease); }
 .launch-link:hover { color: var(--gold); border-color: var(--gold-deep); }
+.launch-note { font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.04em; color: var(--ash-faint); margin-top: 0.9rem; }
 
 /* ════════════════════════════════════════════════════════════
    CAROUSEL — music + books cover-flow
