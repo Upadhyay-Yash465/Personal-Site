@@ -32,7 +32,14 @@ const speechSchema = new mongoose.Schema({
 
 const Speech = mongoose.model('Speech', speechSchema)
 
-const upload = multer({ dest: 'uploads/' })
+const upload = multer({
+  storage: multer.diskStorage({
+    destination: 'uploads/',
+    filename: (req, file, cb) => {
+      cb(null, `${Date.now()}-${Math.round(Math.random() * 1e9)}${path.extname(file.originalname)}`)
+    },
+  }),
+})
 
 const NIM_BASE_URL = 'https://integrate.api.nvidia.com/v1'
 const GROQ_BASE_URL = 'https://api.groq.com/openai/v1'
